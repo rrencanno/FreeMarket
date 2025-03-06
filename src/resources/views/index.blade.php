@@ -122,8 +122,10 @@
         <label for="inquiry-type">お問い合わせの種類 <span class="required">※</span></label>
         <select id="inquiry-type" name="inquiry_type">
             <option value="">選択してください</option>
-            <option value="商品について">商品について</option>
-            <option value="サービスについて">サービスについて</option>
+            <option value="商品のお届けについて">商品のお届けについて</option>
+            <option value="商品の交換について">商品の交換について</option>
+            <option value="商品トラブル">商品トラブル</option>
+            <option value="ショップへのお問い合わせ">ショップへのお問い合わせ</option>
             <option value="その他">その他</option>
         </select>
         <div class="form__error">

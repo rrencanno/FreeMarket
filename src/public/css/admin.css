@@ -6,11 +6,14 @@
     color: #6d4c41;
 }
 
-/* タイトル */
-h2 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+.admin-container {
+    display: flex;
+}
+
+.admin {
+    margin: 0px auto;
+    padding: 30px;
+    justify-content: center;
 }
 
 /* フォーム全体のレイアウト */
