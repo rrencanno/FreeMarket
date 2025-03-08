@@ -17,8 +17,8 @@ class ContactFactory extends Factory
         $prefix = $this->faker->randomElement(['090', '080', '070']);
 
         return [
-            'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
+            'first_name' => $this->faker->firstName,
             'gender' => $this->faker->numberBetween(1,3),
             'email' => $this->faker->safeEmail(),
             'tell' => sprintf(
@@ -42,6 +42,13 @@ class ContactFactory extends Factory
                 'ウィングヒルズ札幌',
                 'サンライズタワー仙台'
             ]) . $this->faker->numberBetween(101, 1503) . '号室',
+            'inquiry_type' => $this->faker->randomElement([
+                '商品のお届けについて',
+                '商品の交換について',
+                '商品トラブル',
+                'ショップへのお問い合わせ',
+                'その他'
+            ]),
             'detail' => $this->faker->realText(100, 2)
         ];
     }

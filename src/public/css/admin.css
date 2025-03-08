@@ -1,36 +1,74 @@
-/* 全体のレイアウト */
-.container {
-    max-width: 1000px;
-    margin: 50px auto;
-    font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", sans-serif;
-    color: #6d4c41;
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    /* 右寄せにする */
+}
+
+.logout-form {
+    margin: 0;
+}
+
+.logout-button {
+    height: 42px;
+    color: #e2d5c9;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 15px;
+    margin: 0px 10px 0px 20px;
+    border: 1px solid #d9c6d5;
+    background-color: #f6f6f6;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #f0f0f0;
 }
 
 .admin-container {
     display: flex;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 .admin {
+    font-family: 'Great Vibes', cursive;
+    color: #8b7969;
+    font-size: 40px;
     margin: 0px auto;
-    padding: 30px;
+    padding: 15px 0px 0px 0px;
     justify-content: center;
+}
+
+/* 全体のレイアウト */
+.container {
+    max-width: 80%;
+    margin: 0px auto;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", sans-serif;
+    color: #6d4c41;
 }
 
 /* フォーム全体のレイアウト */
-form {
+.form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    justify-content: space-between;
     padding: 15px;
-    background-color: #f9f5f1;
+    /* background-color: #f9f5f1;
     border: 1px solid #d7ccc8;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+}
+
+input[type="text"] {
+    width: 300px;
+    border: 1px solid #d7ccc8;
+    border-radius: 3px;
+    font-size: 14px;
+    background-color: white;
 }
 
 /* 入力フォーム */
-input[type="text"],
 input[type="date"],
 select {
     padding: 8px;
@@ -127,3 +165,38 @@ button[type="reset"]:hover {
     background-color: #8d6e63;
     color: white;
 }
+
+/* モーダルの非表示設定 */
+/* .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* モーダル表示 */
+/* .modal:target {
+    display: flex;
+} */
+
+/* モーダルの中身 */
+/* .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 500px;
+    position: relative;
+} */
+
+/* 閉じるボタン */
+/* .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    text-decoration: none;
+    font-size: 24px;
+    color: black;
+} */

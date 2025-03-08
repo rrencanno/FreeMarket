@@ -7,34 +7,34 @@ body {
     padding: 0;
 }
 
-.register-container {
-    width: 100%;
-    padding: 10px;
-    background-color: #b5b2b0;
-    color: rgb(78, 76, 76);
-    font-size: 16px;
-    border: 1px solid rgb(78, 76, 76);
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* コンテナ */
-.container {
-    margin-top: 50px;
-}
-
-/* タイトル */
-.title {
-    font-size: 28px;
-    color: #6f5d50;
-    margin-bottom: 10px;
-}
-
-/* サブタイトル */
-.subtitle {
+.register-button {
+    width: 106px;
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 0px 10px 0px 0px;
+    background-color: #f6f6f6;
+    color: #e2d5c9;
+    text-decoration: none;
     font-size: 20px;
-    color: #7a6a5d;
-    margin-bottom: 20px;
+    font-weight: bold;
+    border: 1px solid #d9c6d5;
+}
+
+.register-button:hover {
+    background-color: #f0f0f0;
+    /* ホバー時の色 */
+    border-color: #d9c6d5;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.subtitle {
+    font-family: 'Great Vibes', cursive;
+    color: #8b7969;
+    font-size: 40px;
+    margin: 0px auto;
+    padding: 50px 0px 50px 0px;
+    justify-content: center;
 }
 
 /* フォームのスタイル */

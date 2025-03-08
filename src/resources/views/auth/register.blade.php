@@ -6,16 +6,13 @@
 
 @section('header')
 <div class="header-container">
-    <form class="login-form" action="/login" method="post">
-        @csrf
-        <button type="submit" class="login-button">login</button>
-    </form>
+    <a href="{{ route('login') }}" class="login-button">login</a>
 </div>
 @endsection
 
 @section('content')
 <div class="register-container">
-    <h2 class="register">{{ __('Register') }}</h2>
+    <h2 class="subtitle">{{ __('Register') }}</h2>
 </div>
 <div class="container">
     <div class="row justify-content-center">

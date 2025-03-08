@@ -14,19 +14,19 @@
     <div class="form-group">
         <label for="name">お名前 <span class="required">※</span></label>
         <div class="name-fields">
-            <input type="text" id="first_name" name="first_name" placeholder="例: 山田" value="{{ old('first_name') }}">
-            <input type="text" id="last_name" name="last_name" placeholder="例: 太郎" value="{{ old('last_name') }}">
+            <input type="text" id="last_name" name="last_name" placeholder="例: 山田" value="{{ old('last_name') }}">
+            <input type="text" id="first_name" name="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}">
         </div>
         <div class="form__error-container">
             <div class="form__error">
                 <!--バリデーションメッセージ-->
-                @error('first_name')
+                @error('last_name')
                     {{ $message }}
                 @enderror
             </div>
             <div class="form__error">
                 <!--バリデーションメッセージ-->
-                @error('last_name')
+                @error('first_name')
                     {{ $message }}
                 @enderror
             </div>

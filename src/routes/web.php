@@ -31,4 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::get('/admin/{id}', [AdminController::class, 'show'])->name('admin.show');
 });
+
+Route::delete('/admin/{id}', [AdminController::class, 'destroy'])->name('admin.destroy');
 // Auth::routes();

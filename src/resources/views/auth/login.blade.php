@@ -6,16 +6,15 @@
 
 @section('header')
 <div class="header-container">
-    <form class="register-form" action="{{ route('register') }}" method="post">
-        @csrf
-    </form>
-    <button type="submit" class="register-button">register</button>
+    <a href="{{ route('register') }}" class="register-button">register</a>
 </div>
 @endsection
 
 @section('content')
-<div class="container">
+<div class="login-container">
     <h2 class="subtitle">Login</h2>
+</div>
+<div class="container">
     <div class="form-container">
         <form action="{{ route('login') }}" method="POST">
             @csrf

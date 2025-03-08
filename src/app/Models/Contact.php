@@ -11,13 +11,14 @@ class Contact extends Model
 
     protected $fillable = [
         'category_id',
-        'first_name',
         'last_name',
+        'first_name',
         'gender',
         'email',
         'tell',
         'address',
         'building',
+        'inquiry_type',
         'detail'
     ];
 
