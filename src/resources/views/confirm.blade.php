@@ -4,11 +4,16 @@
     <link rel="stylesheet" href="{{ asset('css/confirm.css') }}" />
 @endsection
 
+@section('header')
+<div class="header-container"></div>
+@endsection
+
 @section('content')
+<div class="subtitle-container">
+    <h2 class="subtitle">Confirm</h2>
+</div>
 
 <div class="container">
-    <h2>Confirm</h2>
-
     <form class="form" action="/contacts" method="post">
         @csrf
         <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->

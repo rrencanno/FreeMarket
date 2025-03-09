@@ -51,6 +51,8 @@
         <button type="reset" onclick="window.location='{{ route('admin.index') }}'">リセット</button>
     </form>
 
+    {{ $contacts->links() }}
+
     <table class="table mt-3">
         <tr>
             <th>お名前</th>
@@ -103,7 +105,5 @@
         </tr>
         @endforeach
     </table>
-
-    {{ $contacts->links() }}
 </div>
 @endsection

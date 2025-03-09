@@ -4,9 +4,14 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
 
-@section('content')
+@section('header')
+<div class="header-container"></div>
+@endsection
 
-<h2>Contact</h2>
+@section('content')
+<div class="subtitle-container">
+    <h2 class="subtitle">Contact</h2>
+</div>
 
 <form action="/confirm" method="post" class="contact-form">
     @csrf
@@ -24,7 +29,7 @@
                     {{ $message }}
                 @enderror
             </div>
-            <div class="form__error">
+            <div class="form__error__first-name">
                 <!--バリデーションメッセージ-->
                 @error('first_name')
                     {{ $message }}
@@ -37,10 +42,10 @@
         <label>性別 <span class="required">※</span></label>
         <div class="gender-options">
             <input type="radio" id="male" name="gender" value="1" {{ old('gender', '1') == '1' ? 'checked' : '' }}>
-            <label for="male">男性</label>
+            <label class="male" for="male">男性</label>
 
             <input type="radio" id="female" name="gender" value="2" {{ old('gender') == '2' ? 'checked' : '' }}>
-            <label for="female">女性</label>
+            <label class="female" for="female">女性</label>
 
             <input type="radio" id="other" name="gender" value="3" {{ old('gender') == '3' ? 'checked' : '' }}>
             <label for="other">その他</label>
@@ -63,12 +68,12 @@
     <div class="form-group">
         <label for="email">メールアドレス <span class="required">※</span></label>
         <input type="email" id="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}">
-    </div>
-    <div class="form__error">
-        <!--バリデーションメッセージ-->
-        @error('email')
-            {{ $message }}
-        @enderror
+        <div class="form__error">
+            <!--バリデーションメッセージ-->
+            @error('email')
+                {{ $message }}
+            @enderror
+        </div>
     </div>
 
     <div class="form-group">
@@ -87,13 +92,13 @@
                     {{ $message }}
                 @enderror
             </div>
-            <div class="form__error">
+            <div class="form__error__phone2">
                 <!--バリデーションメッセージ-->
                 @error('phone2')
                     {{ $message }}
                 @enderror
             </div>
-            <div class="form__error">
+            <div class="form__error__phone3">
                 <!--バリデーションメッセージ-->
                 @error('phone3')
                     {{ $message }}

@@ -103,6 +103,60 @@ button[type="reset"]:hover {
     background-color: #a1887f;
 }
 
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    /* gap: 8px; */
+    margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    /* border-radius: 8px; */
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.pagination a {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination .active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.pagination .disabled {
+    display: flex;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #ddd;
+    cursor: not-allowed;
+}
+
 /* テーブルのスタイル */
 .table {
     width: 100%;
@@ -136,34 +190,6 @@ button[type="reset"]:hover {
 
 .table a:hover {
     background-color: #6d4c41;
-}
-
-/* ページネーション */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination .page-item {
-    margin: 0 5px;
-}
-
-.pagination .page-link {
-    color: #6d4c41;
-    border: 1px solid #d7ccc8;
-    padding: 5px 10px;
-    border-radius: 3px;
-    text-decoration: none;
-}
-
-.pagination .page-link:hover {
-    background-color: #f9f5f1;
-}
-
-.pagination .active .page-link {
-    background-color: #8d6e63;
-    color: white;
 }
 
 /* モーダルの非表示設定 */
