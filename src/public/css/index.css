@@ -68,39 +68,34 @@ input[type="radio"] {
     gap: 10px;
 }
 
-.name-fields input {
+.name-fields__last_name,
+.name-fields__first_name {
     width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.form__error-container {
-    display: flex;
-    /* 横並びにする */
-    gap: 10px;
-    /* エラー間の間隔を調整 */
+.last_name,
+.first_name {
+    width: 100%;
 }
 
 .form__error {
     color: red;
-    /* エラーメッセージを赤くする */
     font-size: 14px;
-    /* フォントサイズ調整 */
 }
 
-.form__error__first-name {
-    color: red;
-    font-size: 14px;
-    margin-left: 279px;
-}
-
-.form__error__phone2,
-.form__error__phone3 {
-    color: red;
-    font-size: 14px;
-    margin-left: 88px;
+.phone-fields__phone1,
+.phone-fields__phone2,
+.phone-fields__phone3 {
+    width: 30%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .phone-fields input {
-    width: 30%;
     text-align: center;
 }
 

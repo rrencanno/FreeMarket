@@ -1,7 +1,6 @@
 .header-container {
     display: flex;
     justify-content: flex-end;
-    /* 右寄せにする */
 }
 
 .logout-form {
@@ -47,17 +46,12 @@
     color: #6d4c41;
 }
 
-/* フォーム全体のレイアウト */
 .form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-between;
     padding: 15px;
-    /* background-color: #f9f5f1;
-    border: 1px solid #d7ccc8;
-    border-radius: 5px;
-    margin-bottom: 20px; */
 }
 
 input[type="text"] {
@@ -108,7 +102,6 @@ button[type="reset"]:hover {
     display: flex;
     justify-content: right;
     align-items: center;
-    /* gap: 8px; */
     margin-top: 20px;
 }
 
@@ -119,7 +112,6 @@ button[type="reset"]:hover {
     justify-content: center;
     width: 25px;
     height: 25px;
-    /* border-radius: 8px; */
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
@@ -191,38 +183,3 @@ button[type="reset"]:hover {
 .table a:hover {
     background-color: #6d4c41;
 }
-
-/* モーダルの非表示設定 */
-/* .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
-
-/* モーダル表示 */
-/* .modal:target {
-    display: flex;
-} */
-
-/* モーダルの中身 */
-/* .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 500px;
-    position: relative;
-} */
-
-/* 閉じるボタン */
-/* .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    text-decoration: none;
-    font-size: 24px;
-    color: black;
-} */

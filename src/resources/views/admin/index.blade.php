@@ -21,9 +21,6 @@
 
     <form class="form" method="GET" action="{{ route('admin.index') }}">
         <input type="text" name="search" placeholder="名前やメールアドレスを入力してください" value="{{ request('search') }}">
-        <!-- <input type="checkbox" name="exact_match" {{ request('exact_match') ? 'checked' : '' }}> 完全一致 -->
-
-        <!-- <input type="text" name="email" placeholder="メールアドレス" value="{{ request('email') }}"> -->
 
         <select name="gender">
             <option value="all" {{ request('gender') == 'all' ? 'selected' : '' }}>性別</option>
@@ -33,10 +30,6 @@
         </select>
 
         <select name="inquiry_type">
-            <!-- <option value="all" {{ request('category_id') == 'all' ? 'selected' : '' }}>お問い合わせの種類</option>
-            @foreach($categories as $category)
-                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>{{ $category->content }}</option>
-            @endforeach -->
             <option value="all" {{ request('inquiry_type') == 'all' ? 'selected' : '' }}>お問い合わせの種類</option>
             <option value="商品のお届けについて" {{ request('inquiry_type') == '商品のお届けについて' ? 'selected' : '' }}>商品のお届けについて</option>
             <option value="商品の交換について" {{ request('inquiry_type') == '商品の交換について' ? 'selected' : '' }}>商品の交換について</option>
@@ -76,32 +69,8 @@
             <td>{{ $contact->email }}</td>
             <td>{{ $contact->inquiry_type }}</td>
             <td>
-                <!-- モーダルを開くためのリンク -->
                 <a href="{{ route('admin.show', $contact->id) }}">詳細</a>
             </td>
-
-            <!-- モーダルウィンドウ -->
-            <!-- <div id="modal-{{ $contact->id }}" class="modal">
-                <div class="modal-content">
-                    <a href="#" class="close">&times;</a>
-
-                    <h2>お問い合わせ詳細</h2>
-                    <p><strong>お名前:</strong> {{ $contact->last_name }} {{ $contact->first_name }}</p>
-                    <p><strong>性別:</strong> {{ $contact->gender == 1 ? '男性' : ($contact->gender == 2 ? '女性' : 'その他') }}</p>
-                    <p><strong>メールアドレス:</strong> {{ $contact->email }}</p>
-                    <p><strong>電話番号:</strong> {{ $contact->tell }}</p>
-                    <p><strong>住所:</strong> {{ $contact->address }}</p>
-                    <p><strong>建物名:</strong> {{ $contact->building }}</p>
-                    <p><strong>お問い合わせの種類:</strong> {{ $contact->category->name }}</p>
-                    <p><strong>お問い合わせ内容:</strong> {{ $contact->detail }}</p>
-
-                    <form method="POST" action="{{ route('admin.destroy', $contact->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">削除</button>
-                    </form>
-                </div>
-            </div> -->
         </tr>
         @endforeach
     </table>

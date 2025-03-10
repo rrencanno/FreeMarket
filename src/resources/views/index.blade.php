@@ -15,25 +15,24 @@
 
 <form action="/confirm" method="post" class="contact-form">
     @csrf
-    <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
     <div class="form-group">
         <label for="name">お名前 <span class="required">※</span></label>
         <div class="name-fields">
-            <input type="text" id="last_name" name="last_name" placeholder="例: 山田" value="{{ old('last_name') }}">
-            <input type="text" id="first_name" name="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}">
-        </div>
-        <div class="form__error-container">
-            <div class="form__error">
-                <!--バリデーションメッセージ-->
-                @error('last_name')
-                    {{ $message }}
-                @enderror
+            <div class="name-fields__last_name">
+                <input type="text" id="last_name" name="last_name" class="last_name" placeholder="例: 山田" value="{{ old('last_name') }}">
+                <div class="form__error">
+                    @error('last_name')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
-            <div class="form__error__first-name">
-                <!--バリデーションメッセージ-->
-                @error('first_name')
-                    {{ $message }}
-                @enderror
+            <div class="name-fields__first_name">
+                <input type="text" id="first_name" name="first_name" class="first_name" placeholder="例: 太郎" value="{{ old('first_name') }}">
+                <div class="form__error">
+                    @error('first_name')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
     </div>
@@ -49,16 +48,8 @@
 
             <input type="radio" id="other" name="gender" value="3" {{ old('gender') == '3' ? 'checked' : '' }}>
             <label for="other">その他</label>
-
-            <!-- <input type="radio" id="male" name="gender" value="男性" checked>
-            <label for="male">男性</label>
-            <input type="radio" id="female" name="gender" value="女性">
-            <label for="female">女性</label>
-            <input type="radio" id="other" name="gender" value="その他">
-            <label for="other">その他</label> -->
         </div>
         <div class="form__error">
-            <!--バリデーションメッセージ-->
             @error('gender')
                 {{ $message }}
             @enderror
@@ -69,7 +60,6 @@
         <label for="email">メールアドレス <span class="required">※</span></label>
         <input type="email" id="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}">
         <div class="form__error">
-            <!--バリデーションメッセージ-->
             @error('email')
                 {{ $message }}
             @enderror
@@ -79,30 +69,31 @@
     <div class="form-group">
         <label for="phone">電話番号 <span class="required">※</span></label>
         <div class="phone-fields">
-            <input type="text" id="phone1" name="phone1" placeholder="080" value="{{ old('phone1') }}">
-            <span>-</span>
-            <input type="text" id="phone2" name="phone2" placeholder="1234" value="{{ old('phone2') }}">
-            <span>-</span>
-            <input type="text" id="phone3" name="phone3" placeholder="5678" value="{{ old('phone3') }}">
-        </div>
-        <div class="form__error-container">
-            <div class="form__error">
-                <!--バリデーションメッセージ-->
-                @error('phone1')
-                    {{ $message }}
-                @enderror
+            <div class="phone-fields__phone1">
+                <input type="text" id="phone1" name="phone1" placeholder="080" value="{{ old('phone1') }}">
+                <div class="form__error">
+                    @error('phone1')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
-            <div class="form__error__phone2">
-                <!--バリデーションメッセージ-->
-                @error('phone2')
-                    {{ $message }}
-                @enderror
+            <span>-</span>
+            <div class="phone-fields__phone2">
+                <input type="text" id="phone2" name="phone2" placeholder="1234" value="{{ old('phone2') }}">
+                <div class="form__error">
+                    @error('phone2')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
-            <div class="form__error__phone3">
-                <!--バリデーションメッセージ-->
-                @error('phone3')
-                    {{ $message }}
-                @enderror
+            <span>-</span>
+            <div class="phone-fields__phone3">
+                <input type="text" id="phone3" name="phone3" placeholder="5678" value="{{ old('phone3') }}">
+                <div class="form__error">
+                    @error('phone3')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
     </div>
@@ -111,7 +102,6 @@
         <label for="address">住所 <span class="required">※</span></label>
         <input type="text" id="address" name="address" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
         <div class="form__error">
-            <!--バリデーションメッセージ-->
             @error('address')
                 {{ $message }}
             @enderror
@@ -134,7 +124,6 @@
             <option value="その他">その他</option>
         </select>
         <div class="form__error">
-            <!--バリデーションメッセージ-->
             @error('inquiry_type')
                 {{ $message }}
             @enderror
@@ -145,7 +134,6 @@
         <label for="message">お問い合わせ内容 <span class="required">※</span></label>
         <textarea id="message" name="detail" placeholder="お問い合わせ内容をご記載ください">{{ old('detail') }}</textarea>
         <div class="form__error">
-            <!--バリデーションメッセージ-->
             @error('detail')
                 {{ $message }}
             @enderror

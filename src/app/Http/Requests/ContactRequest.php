@@ -28,7 +28,7 @@ class ContactRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255'],
             'gender' => ['required'],
             'email' => ['required', 'email'],
-            'phone1' => ['required', 'regex:/^\d{1,5}$/'],
+            'phone1' => ['required', 'regex:/^\d{1,5}$/'], /* 1~5桁までの数字を許可 */
             'phone2' => ['required', 'regex:/^\d{1,5}$/'],
             'phone3' => ['required', 'regex:/^\d{1,5}$/'],
             'address' => ['required'],

@@ -28,16 +28,5 @@ class RegisterController extends Controller
         Auth::login($user);
 
         return redirect()->route('login.index'); // 登録後のリダイレクト先
-        // return view('auth.login');
     }
-
-    // protected function registered(Request $request, $user)
-    // {
-    //     return redirect()->route('register');
-    // }
-
-    // public function showRegistrationForm()
-    // {
-    //     return view('register'); // ここで表示するBladeファイルを指定
-    // }
 }
