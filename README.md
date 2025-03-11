@@ -42,7 +42,7 @@
 - **お問い合わせ画面**：[http://localhost](http://localhost)
 - **入力内容確認画面**：[http://localhost/confirm](http://localhost/confirm)
 - **Thanks画面**：[http://localhost/thanks](http://localhost/thanks)
-- **管理画面**：[http://localhost/admin](http://localhost/admin)
 - **ユーザ登録画面**：[http://localhost/register](http://localhost/register)
 - **ログイン画面**：[http://localhost/login](http://localhost/login)
+- **管理画面**：[http://localhost/admin](http://localhost/admin)
 - **phpMyAdmin**：[http://localhost:8080](http://localhost:8080)
