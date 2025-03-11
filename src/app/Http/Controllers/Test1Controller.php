@@ -24,20 +24,12 @@ class Test1Controller extends Controller
 
     public function store(ContactRequest $request)
     {
-        // dd($request->gender); この時点でgenderは"男性"
         $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'inquiry_type', 'detail']);
         $genders = ['男性' => 1, '女性' => 2, 'その他' => 3];
         $contact['gender'] = $genders[$contact['gender']];
-        // dd($contact['gender']); この時点でgenderは"1"
         $contact['tell'] = $request->phone1 . '-' . $request->phone2 . '-' . $request->phone3;
 
-        // inquiry_type フィールドを設定
-        // $contact['inquiry_type'] = $request->input('inquiry_type');
-
         Contact::create($contact);
-
-        // $categories = $request->only(['inquiry_type']);
-        // Category::create($categories);
 
         return view('thanks');
     }

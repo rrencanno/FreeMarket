@@ -14,7 +14,7 @@
 </div>
 
 <div class="container">
-    <form class="form" action="/contacts" method="post">
+    <form class="form" action="/thanks" method="post">
         @csrf
         <table class="confirm-table">
             <tr class="confirm-table__row">

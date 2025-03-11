@@ -11,7 +11,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [Test1Controller::class, 'index'])->name('index');
 Route::post('/confirm', [Test1Controller::class, 'confirm'])->name('confirm');
-Route::post('/contacts', [Test1Controller::class, 'store'])->name('store');
+Route::post('/thanks', [Test1Controller::class, 'store'])->name('store');
 
 // Route::middleware('guest')->group(function () {
 //     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register.index');
