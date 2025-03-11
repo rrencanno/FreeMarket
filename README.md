@@ -15,11 +15,15 @@
 1. `docker-compose exec php bash`
 2. `composer install`
 3. `cp .env.example .env`
-    `.env` ファイルの環境変数を変更
+    `.env` ファイルの環境変数を変更:
+    
+    ```
     ・12行目 → DB_HOST = mysql
     ・14行目 → DB_DATABASE = laravel_db
     ・15行目 → DB_USERNAME = laravel_user
     ・16行目 → DB_PASSWORD = laravel_pass
+    ```
+
 4. `php artisan key:generate`
 5. `php artisan migrate`
 6. `php artisan db:seed`
