@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Contact;
 
-class ContactsTableSeeder extends Seeder
+class SeasonsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,11 @@ class ContactsTableSeeder extends Seeder
      */
     public function run()
     {
-        Contact::factory()->count(35)->create();
+        DB::table('seasons')->insert([
+            ['name' => '春'],
+            ['name' => '夏'],
+            ['name' => '秋'],
+            ['name' => '冬'],
+        ]);
     }
 }
