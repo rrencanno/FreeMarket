@@ -1,120 +1,37 @@
 main {
-    max-width: 1980px;
-    margin: 0 auto;
-    background: white;
-    padding: 0px 300px;
+    background-color: #f8f8f8;
 }
-
-.header-container {
-    width: 116px;
-}
-
-.subtitle-container {
-    display: flex;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 .subtitle {
-    font-family: 'Great Vibes', cursive;
-    color: #8b7969;
-    font-size: 40px;
-    margin: 0px auto;
-    padding: 15px 0px 0px 0px;
-    justify-content: center;
+    margin: 0px;
 }
 
-.contact-form {
-    text-align: left;
+.container {
+    max-width: 1200px;
+    margin: auto;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.male,
-.female {
-    margin-right: 100px;
-}
-
-.required {
-    color: red;
-    font-size: 14px;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #d3c5bb;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-input[type="radio"] {
-    width: auto;
-    margin-right: 5px;
-}
-
-.name-fields,
-.phone-fields {
-    display: flex;
-    gap: 10px;
-}
-
-.name-fields__last_name,
-.name-fields__first_name {
-    width: 50%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.last_name,
-.first_name {
-    width: 100%;
-}
-
-.form__error {
-    color: red;
-    font-size: 14px;
-}
-
-.phone-fields__phone1,
-.phone-fields__phone2,
-.phone-fields__phone3 {
-    width: 30%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.phone-fields input {
-    text-align: center;
-}
-
-textarea {
-    height: 80px;
-}
-
-.submit-button {
-    width: 100%;
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 10px;
-    margin-bottom: 150px;
-    background-color: #8c756a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+    text-align: center;
+    background: white;
 }
 
-.submit-button:hover {
-    background-color: #705a50;
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
 }
