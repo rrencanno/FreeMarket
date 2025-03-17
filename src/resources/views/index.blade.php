@@ -9,7 +9,30 @@
     <div class="header">
         <h1 class="subtitle">商品一覧</h1>
 
-        <div class="search-form">
+        <form action="{{ route('products.index') }}" method="GET">
+            <div class="search-form">
+                <input type="text" name="search" class="search-form_input" placeholder="商品名で検索" value="{{ request('search') }}">
+                <button type="submit" class="search-form_button">検索</button>
+            </div>
+
+            <div class="sort-form">
+                <p class="sort-form_title">価格順で表示</p>
+                <select name="sort" class="sort-form_select" onchange="this.form.submit()">
+                    <option value="">価格で並べ替え</option>
+                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>安い順</option>
+                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>高い順</option>
+                </select>
+            </div>
+
+            @if(request('sort'))
+                <div class="sort-tag">
+                    {{ request('sort') == 'asc' ? '安い順' : '高い順' }}
+                    <a href="{{ route('products.index', array_merge(request()->except('sort'))) }}">×</a>
+                </div>
+            @endif
+            <div class="line"></div>
+        </form>
+        <!-- <div class="search-form">
             <form action="{{ route('products.index') }}" method="GET">
                 <input type="text" name="search" class="search-form_input" placeholder="商品名で検索" value="{{ request('search') }}">
                 <button type="submit" class="search-form_button">検索</button>
@@ -25,7 +48,7 @@
                     <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>高い順</option>
                 </select>
             </form>
-        </div>
+        </div> -->
     </div>
 
     <div class="product-list">

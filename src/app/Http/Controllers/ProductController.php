@@ -15,15 +15,22 @@ class ProductController extends Controller
     {
         $query = Product::query();
 
-        // 検索機能
-        if ($request->has('search')) {
+        // 商品名検索
+        if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
-        // 価格順ソート
-        if ($request->has('sort')) {
+        // 並び替え
+        if ($request->filled('sort')) {
             $query->orderBy('price', $request->sort);
         }
+        // if ($request->has('search')) {
+        //     $query->where('name', 'like', '%' . $request->search . '%');
+        // }
+
+        // if ($request->has('sort')) {
+        //     $query->orderBy('price', $request->sort);
+        // }
 
         $products = $query->paginate(6);
 
@@ -46,13 +53,16 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
-            'image_path' => $imagePath,
+            'image' => $imagePath,
         ]);
 
         // 中間テーブルに保存
         if ($request->has('seasons')) {
             $product->seasons()->attach($request->seasons);
         }
+
+        // $seasons = $request->input('seasons', []);
+        // $product->seasons()->sync($seasons);
 
         return redirect()->route('products.index')->with('success', '商品を登録しました');
     }

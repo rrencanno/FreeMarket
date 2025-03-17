@@ -8,8 +8,7 @@ main {
 
 .container {
     display: flex;
-    max-width: 1200px;
-    margin: 20px auto;
+    max-width: 2000px;
 }
 
 .header {
@@ -35,11 +34,6 @@ main {
     box-shadow: 1px 1px 3px #ddd;
 }
 
-.sort-form {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ededec;
-}
-
 .sort-form_title {
     font-size: 16px;
     font-weight: bold;
@@ -54,9 +48,61 @@ main {
     color: #757575;
 }
 
+.sort-tag {
+    width: 60%;
+    font-size: 12px;
+    display: inline-block;
+    background: #f8f8f8;
+    margin: 20px auto 0px;
+    padding: 5px 10px;
+    border: 1px solid #f5c800;
+    border-radius: 20px;
+}
+
+.sort-tag a {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: #f5c800;
+    border: 1px solid #f5c800;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 10px;
+}
+
+.line {
+    margin-top: 20px;
+    border-bottom: 1px solid #ededec;
+}
+
 .product-list {
     flex: 1;
     padding: 20px;
+}
+
+.add-product {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-product_button {
+    background-color: #f0c14b;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 1px 3px 3px #ddd;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.add-product_button:hover {
+    background-color: #f2d288;
+    /* ホバー時の背景色 */
 }
 
 .product-grid {

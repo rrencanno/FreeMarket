@@ -5,10 +5,25 @@ body {
     padding: 0;
 }
 
+.breadcrumb {
+    width: 60%;
+    font-size: 16px;
+    margin: 40px auto 0px;
+}
+
+.breadcrumb a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
 .container {
     display: flex;
     width: 60%;
-    margin: 40px auto;
+    margin: 0px auto 40px;
     /* background: white;
     padding: 30px;
     border-radius: 10px;
@@ -50,6 +65,10 @@ label {
     display: block;
 }
 
+.container-info label:not(:first-of-type) {
+    margin-top: 20px;
+}
+
 .container-description {
     width: 60%;
     margin: 0px auto;
@@ -60,7 +79,7 @@ input[type="number"],
 textarea {
     width: 100%;
     padding: 10px;
-    margin: 5px 0px 20px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
@@ -70,7 +89,7 @@ textarea {
     height: 100px;
 }
 
-button {
+/* button {
     display: inline-block;
     width: 48%;
     padding: 12px;
@@ -80,32 +99,87 @@ button {
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+} */
+
+.container-buttons {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-button[type="submit"] {
+.btn-save,
+.btn-back {
+    width: 20%;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* 変更を保存ボタン */
+.btn-save {
+    background-color: #fbc02d;
+}
+
+/* 戻るボタン */
+.btn-back {
+    background-color: #a48cc6;
+}
+
+.form-delete {
+    display: flex;
+    justify-content: flex-end;
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* 削除ボタン */
+.btn-delete {
+    background-color: #f8f8f8;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* .button-save {
+    padding: 12px;
     background-color: #ffc107;
     color: white;
-}
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+} */
 
-button[type="submit"]:hover {
+.btn-save:hover {
     background-color: #e0a800;
 }
 
-button.delete {
+/* button.delete {
     background-color: #dc3545;
     color: white;
-}
+} */
 
-button.delete:hover {
+/* .btn-delete:hover {
     background-color: #c82333;
-}
+} */
 
-button.back {
+/* button.back {
     background-color: #ccc;
     color: black;
-}
+} */
 
-button.back:hover {
+.btn-back:hover {
     background-color: #b3b3b3;
 }
 
@@ -131,4 +205,9 @@ button.back:hover {
     background-color: #ffc107;
     color: white;
     border-color: #e0a800;
+}
+
+.form-error {
+    color: red;
+    font-size: 14px;
 }
