@@ -24,10 +24,6 @@ body {
     display: flex;
     width: 60%;
     margin: 0px auto 40px;
-    /* background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
 }
 
 .container-img {
@@ -89,18 +85,6 @@ textarea {
     height: 100px;
 }
 
-/* button {
-    display: inline-block;
-    width: 48%;
-    padding: 12px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-} */
-
 .container-buttons {
     width: 60%;
     margin: 0 auto;
@@ -148,36 +132,9 @@ textarea {
     cursor: pointer;
 }
 
-
-
-/* .button-save {
-    padding: 12px;
-    background-color: #ffc107;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-} */
-
 .btn-save:hover {
     background-color: #e0a800;
 }
-
-/* button.delete {
-    background-color: #dc3545;
-    color: white;
-} */
-
-/* .btn-delete:hover {
-    background-color: #c82333;
-} */
-
-/* button.back {
-    background-color: #ccc;
-    color: black;
-} */
 
 .btn-back:hover {
     background-color: #b3b3b3;

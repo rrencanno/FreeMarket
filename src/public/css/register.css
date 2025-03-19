@@ -84,46 +84,30 @@ main {
 
 .form-group input[type="checkbox"] {
     border-radius: 50%;
-    /* 円形にする */
     -webkit-appearance: none;
-    /* デフォルトのスタイルを無効化 */
     appearance: none;
-    /* デフォルトのスタイルを無効化 */
     width: 16px;
-    /* サイズを調整 */
     height: 16px;
-    /* サイズを調整 */
     border: 1px solid #ccc;
-    /* 枠線を設定 */
     outline: none;
-    /* アウトラインを削除 */
     cursor: pointer;
-    /* カーソルをポインターに変更 */
 }
 
 .form-group input[type="checkbox"]:checked {
     background-color: #007bff;
-    /* 選択時の背景色 */
     border-color: #007bff;
-    /* 選択時の枠線の色 */
 }
 
 .form-group input[type="checkbox"]:checked::before {
     content: '';
     display: block;
     width: 8px;
-    /* チェックマークのサイズ */
     height: 8px;
-    /* チェックマークのサイズ */
     background-color: white;
-    /* チェックマークの色 */
     border-radius: 50%;
-    /* チェックマークを円形にする */
     margin: 3px;
-    /* チェックマークの位置を調整 */
 }
 
-/* 季節のラベルを横並びにする */
 .form-group label {
     display: inline-block;
     margin-right: 10px;

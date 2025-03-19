@@ -24,13 +24,6 @@ class ProductController extends Controller
         if ($request->filled('sort')) {
             $query->orderBy('price', $request->sort);
         }
-        // if ($request->has('search')) {
-        //     $query->where('name', 'like', '%' . $request->search . '%');
-        // }
-
-        // if ($request->has('sort')) {
-        //     $query->orderBy('price', $request->sort);
-        // }
 
         $products = $query->paginate(6);
 
@@ -39,7 +32,7 @@ class ProductController extends Controller
 
     public function register()
     {
-        $seasons = Season::all(); // 季節の一覧を取得
+        $seasons = Season::all();
         return view('register', compact('seasons'));
     }
 
@@ -60,9 +53,6 @@ class ProductController extends Controller
         if ($request->has('seasons')) {
             $product->seasons()->attach($request->seasons);
         }
-
-        // $seasons = $request->input('seasons', []);
-        // $product->seasons()->sync($seasons);
 
         return redirect()->route('products.index')->with('success', '商品を登録しました');
     }
@@ -98,41 +88,3 @@ class ProductController extends Controller
         return redirect('/products');
     }
 }
-
-// public function show(Product $product)
-    // {
-    //     $seasons = Season::all();
-    //     return view('show', compact('product', 'seasons'));
-    // }
-
-    // public function update(ProductRequest $request, Product $product)
-    // {
-    //     $product->name = $request->name;
-    //     $product->price = $request->price;
-    //     $product->description = $request->description;
-
-    //     if ($request->hasFile('image')) {
-    //         if ($product->image) {
-    //             Storage::delete('public/' . $product->image);
-    //         }
-    //         $imagePath = $request->file('image')->store('products', 'public');
-    //         $product->image = str_replace('public/', '', $imagePath);
-    //     } else {
-    //         $product->image = '';
-    //     }
-
-    //     $product->save();
-
-    //     $product->seasons()->sync($request->season);
-
-    //     return redirect()->route('products.index');
-    // }
-
-    // public function destroy(Product $product)
-    // {
-    //     if ($product->image) {
-    //         Storage::delete('public/' . $product->image);
-    //     }
-    //     $product->delete();
-    //     return redirect()->route('products.index');
-    // }

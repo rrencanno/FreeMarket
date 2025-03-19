@@ -17,8 +17,8 @@ class ProductSeasonSeeder extends Seeder
     {
         DB::table('products_season')->insert([
             [
-                'product_id' => 1, // 商品ID
-                'season_id' => 3, // 季節ID
+                'product_id' => 1,
+                'season_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -28,7 +28,7 @@ class UpdateProductRequest extends FormRequest
             'price' => ['required', 'numeric', 'min:0', 'max:10000'],
             'seasons' => ['required', 'array', 'min:1'], // 複数選択可能なため配列
             'description' => ['required', 'string', 'max:120'],
-            'image' => ['nullable', 'image', 'mimes:png,jpeg'], // 画像は任意（既存のものを保持）
+            'image' => ['nullable', 'image', 'mimes:png,jpeg'],
         ];
     }
 
