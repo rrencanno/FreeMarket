@@ -13,6 +13,6 @@ class Product extends Model
 
     public function seasons()
     {
-        return $this->belongsToMany(Season::class, 'products_season')->using(ProductSeason::class);
+        return $this->belongsToMany(Season::class, 'product_season')->using(ProductSeason::class);
     }
 }

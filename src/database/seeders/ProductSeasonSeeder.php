@@ -15,7 +15,7 @@ class ProductSeasonSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products_season')->insert([
+        DB::table('product_season')->insert([
             [
                 'product_id' => 1,
                 'season_id' => 3,

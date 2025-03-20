@@ -10,7 +10,7 @@ class ProductSeason extends Pivot
 {
     use HasFactory;
 
-    protected $table = 'products_season';
+    protected $table = 'product_season';
 
     protected $fillable = [
         'product_id',
