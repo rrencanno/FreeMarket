@@ -27,6 +27,9 @@
 4. `php artisan key:generate`
 5. `php artisan migrate`
 6. `php artisan db:seed`
+7. `php artisan storage:link`
+8. `exit`
+9. `cp img src/storage/app/public`
 
 ## 使用技術 (実行環境)
 
@@ -39,6 +42,7 @@
 
 ## URL
 
-- **商品一覧画面**：[http://localhost/products](http://localhost_products)
+- **phpMyAdmin**：[http://localhost:8080](http://localhost:8080)
+- **商品一覧画面**：[http://localhost/products](http://localhost/products)
 - **商品詳細画面**：[http://localhost/products/{productId}](http://localhost/products/{productId})
 - **商品登録画面**：[http://localhost/products/search](http://localhost/products/search)
