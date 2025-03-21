@@ -15,6 +15,7 @@
 1. `docker-compose exec php bash`
 2. `composer install`
 3. `cp .env.example .env`
+
     `.env` ファイルの環境変数を変更:
 
     ```
@@ -29,7 +30,29 @@
 6. `php artisan db:seed`
 7. `php artisan storage:link`
 8. `exit`
-9. `cp img src/storage/app/public`
+9. `rsync -av img/ src/storage/app/public/`
+10. この項は「商品登録」や「商品詳細ページでの画像の変更」時に、画像ファイルが2MB以上になる場合に実行する。
+
+    ※ 画像ファイルが2MB以上になると413 Request Entity Too Largeエラーが発生するため
+
+    ・`docker exec -it mogitate_site-nginx-1 bash`
+
+    ・`apt update && apt install nano`
+
+    ・`nano /etc/nginx/conf.d/default.conf`
+
+    ・default.conf に以下を追加
+
+    ```
+    server {
+        ...
+        client_max_body_size 20M;  # 20MBまでアップロード可能
+    }
+    ```
+
+    ・`exit`
+
+    ・`docker exec -it mogitate_site-nginx-1 nginx -s reload`
 
 ## 使用技術 (実行環境)
 
@@ -44,5 +67,3 @@
 
 - **phpMyAdmin**：[http://localhost:8080](http://localhost:8080)
 - **商品一覧画面**：[http://localhost/products](http://localhost/products)
-- **商品詳細画面**：[http://localhost/products/{productId}](http://localhost/products/{productId})
-- **商品登録画面**：[http://localhost/products/search](http://localhost/products/search)
