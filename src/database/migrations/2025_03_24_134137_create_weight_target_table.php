@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateWeightTargetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('weight_target', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->integer('price');
-            $table->string('image', 255)->nullable();
-            $table->text('description');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->decimal('target_weight', 4, 1);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('weight_target');
     }
 }

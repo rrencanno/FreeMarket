@@ -74,7 +74,8 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    // 'home' => RouteServiceProvider::HOME,
+    'home' => '/weight_logs',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,9 +160,7 @@ return [
 
     /*リダイレクト先を直接設定*/
     'redirects' => [
-        'register' => '/login',
-        'login' => '/admin',
-        // 'logout' => '/',
+        'login' => '/login',
     ],
 
 ];

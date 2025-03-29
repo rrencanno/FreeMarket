@@ -1,12 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\WeightLogController;
+use Laravel\Fortify\Fortify;
 
 
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/register', [ProductController::class, 'register'])->name('products.register');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::put('/products/{id}/update', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}/delete', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/register/step1', [RegisterController::class, 'showRegistrationForm'])->name('register.step1');
+Route::post('/register/step1', [RegisterController::class, 'register']);
+Route::get('/register/step2', [RegisterController::class, 'create'])->name('register.step2');
+Route::post('/register/step2', [RegisterController::class, 'store'])->name('register.step2.store');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.attempt');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/weight_logs', [WeightLogController::class, 'index'])->name('weight_logs.index');
+
+Route::post('/weight_logs', [WeightLogController::class, 'store'])->name('weight_logs.store');
+
+Route::get('/weight_logs/{weightLogId}/edit', [WeightLogController::class, 'edit'])->name('weight_logs.edit');
+Route::post('/weight_logs/{weightLogId}', [WeightLogController::class, 'update'])->name('weight_logs.update');
+Route::delete('/weight_logs/{weightLogId}', [WeightLogController::class, 'destroy'])->name('weight_logs.destroy');
+Route::get('/weight_logs/target_setting', [WeightLogController::class, 'editTargetWeight'])
+    ->name('weight_logs.target_setting');
+
+Route::put('/weight_logs/target_setting', [WeightLogController::class, 'updateTargetWeight'])
+    ->name('weight_logs.target_setting.update');

@@ -1,193 +1,286 @@
-main {
-    background-color: #f8f8f8;
-}
-
-.subtitle {
-    margin: 0;
-}
-
+/* コンテナ全体のスタイル */
 .container {
-    display: flex;
-    max-width: 2000px;
-}
-
-.header {
-    width: 200px;
+    max-width: 900px;
+    margin: auto;
     padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.search-input {
-    border-radius: 20px;
-    margin-top: 20px;
-    padding: 8px 12px;
-    border: 1px solid #ededec;
-}
-
-.search-button {
-    width: 100%;
-    border-radius: 2px;
-    border: none;
-    padding: 6px 12px;
-    margin-top: 10px;
-    background-color: #f5c800;
-    box-shadow: 1px 1px 3px #ddd;
-}
-
-.sort-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.sort-select {
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 2px;
-    border: 1px solid #ededec;
-    color: #757575;
-}
-
-.sort-tag {
-    width: 60%;
-    font-size: 12px;
-    display: inline-block;
-    background: #f8f8f8;
-    margin: 20px auto 0px;
-    padding: 5px 10px;
-    border: 1px solid #f5c800;
-    border-radius: 20px;
-}
-
-.sort-tag a {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
-    text-decoration: none;
-    color: #f5c800;
-    border: 1px solid #f5c800;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 10px;
-}
-
-.line {
-    margin-top: 20px;
-    border: 0.5px solid #ededec;
-}
-
-.product-list {
-    flex: 1;
-    padding: 20px;
-}
-
-.add-product {
+/* 目標体重・最新体重エリア */
+.goal-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.add-product-button {
-    background-color: #f0c14b;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow: 1px 3px 3px #ddd;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.add-product-button:hover {
-    background-color: #f2d288;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.product-card {
-    border: none;
+.goal-box {
+    flex: 1;
+    background: #f4f4f4;
+    padding: 15px;
     border-radius: 8px;
     text-align: center;
-    background: white;
-    box-shadow: 1px 1px 3px #ddd;
+    margin: 0 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.product-card img {
-    width: 100%;
-    height: auto;
+.goal-label {
+    font-size: 14px;
+    color: #666;
 }
 
-.product-info {
+.goal-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 5px;
+}
+
+.search-add-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px 10px;
+    width: 100%;
+    padding: 10px 20px;
 }
 
-.pagination {
+/* 検索フォーム */
+.search-container {
+    flex-grow: 1;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; */
+}
+
+.search-input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+}
+
+.search-separator {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+.search-button {
+    padding: 8px 15px;
+    font-size: 16px;
+    background: #919191;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background: #c277af;
+}
+
+/* データ追加ボタン */
+.add-data-container {
+    flex-shrink: 0;
+    /* display: flex;
+    justify-content: center;
+    margin-bottom: 15px; */
+}
+
+.add-data-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(90deg, #aaa7e1, #ffbeb8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-data-button:hover {
+    background: #ff9aa2;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/*モーダルウィンドウ*/
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-target:target {
+    display: flex;
+}
+
+/* モーダルの背景をクリックで閉じる */
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.modal__inner {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 80%;
+    width: 80%;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.required {
+    display: inline-block;
+    color: #fff;
+    padding: 0px 3px;
+    background-color: #ff0000;
+    font-size: 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #aaa;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+    background-color: #f9f9f9;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.cancel {
+    background: #ddd;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.register {
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+/* 体重データテーブル */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 編集アイコン */
+.edit-button img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* ページネーション */
+.pagination-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.pagination li {
-    list-style: none;
+.pagination a {
+    padding: 8px 12px;
     margin: 0 5px;
-    display: inline-block;
-}
-
-.pagination a,
-.pagination span,
-.disabled,
-.px-4.py-2.bg-gray-300.text-gray-600.rounded,
-.px-4.py-2.bg-blue-500.text-white.border.border-blue-500.rounded {
-    padding: 10px 14px;
-    border: none;
-    border-radius: 50%;
     text-decoration: none;
-    color: #333;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
+    color: #666;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
-.pagination .active span {
-    background-color: #007bff;
+.pagination a.active {
+    background: #D88BC2;
     color: white;
-    border-color: #007bff;
+    border: none;
 }
 
-.pagination .disabled span {
-    color: #999;
-    border-color: #ddd;
-}
-
-/* 「<」「>」ボタンのデザイン */
-.pagination li:first-child a,
-.pagination li:first-child span,
-.pagination li:last-child a,
-.pagination li:last-child span {
-    border-radius: 50%;
-}
-
-/* 現在のページのスタイル */
-.px-4.py-2.bg-blue-500.text-white.border.border-blue-500.rounded {
-    background-color: #f5c800;
+.pagination a:hover {
+    background: #c277af;
     color: white;
-    border-color: #f5c800;
-}
-
-/* 「<」が無効（最初のページ）の場合 */
-.disabled {
-    color: #999;
-    border-color: #ddd;
-    background-color: #f8f9fa;
 }

@@ -1,0 +1,91 @@
+/* Google Fonts の読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+main {
+    background: linear-gradient(135deg, #fcd9f7, #ffbeb8);
+    font-family: 'Noto Sans JP', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ログインフォームのコンテナ */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* タイトル */
+.title {
+    font-size: 40px;
+    color: #d896ce;
+    margin-bottom: 5px;
+}
+
+/* サブタイトル */
+.subtitle {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* ラベル */
+label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px 0 5px;
+}
+
+/* 入力欄 */
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* エラーメッセージ */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* ログインボタン */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to right, #a084e8, #f093fb);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(to right, #8f73e6, #ec7cfb);
+}
+
+/* アカウント作成リンク */
+a {
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #6096fd;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

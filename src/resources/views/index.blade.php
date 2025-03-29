@@ -6,55 +6,115 @@
 
 @section('content')
 <div class="container">
-    <div class="header">
-        <h1 class="subtitle">商品一覧</h1>
-
-        <form action="{{ route('products.index') }}" method="GET">
-            <div class="search-form">
-                <input type="text" name="search" class="search-input" placeholder="商品名で検索" value="{{ request('search') }}">
-                <button type="submit" class="search-button">検索</button>
-            </div>
-
-            <div class="sort-form">
-                <p class="sort-title">価格順で表示</p>
-                <select name="sort" class="sort-select" onchange="this.form.submit()">
-                    <option value="">価格で並べ替え</option>
-                    <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>安い順</option>
-                    <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>高い順</option>
-                </select>
-            </div>
-
-            @if(request('sort'))
-                <div class="sort-tag">
-                    {{ request('sort') == 'asc' ? '安い順' : '高い順' }}
-                    <a href="{{ route('products.index', array_merge(request()->except('sort'))) }}">×</a>
-                </div>
-            @endif
-        </form>
-        <hr class="line">
+    <div class="goal-container">
+        <div class="goal-box">
+            <p class="goal-label">目標体重</p>
+            <p class="goal-value">{{ $targetWeight }} kg</p>
+        </div>
+        <div class="goal-box">
+            <p class="goal-label">目標まで</p>
+            <p class="goal-value">{{ $weightDifference }} kg</p>
+        </div>
+        <div class="goal-box">
+            <p class="goal-label">最新体重</p>
+            <p class="goal-value">{{ $latestWeight }} kg</p>
+        </div>
     </div>
 
-    <div class="product-list">
-        <div class="add-product">
-            <a href="{{ route('products.register') }}" class="add-product-button">+ 商品を追加</a>
-        </div>
-        <div class="product-grid">
-            @foreach($products as $product)
-                <div class="product-card">
-                    <a href="{{ route('products.show', $product->id) }}">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                    </a>
-                    <div class="product-info">
-                        <p>{{ $product->name }}</p>
-                        <p>¥{{ number_format($product->price) }}</p>
-                    </div>
-                </div>
-            @endforeach
+    {{-- 検索フォーム --}}
+    <div class="search-add-container">
+        <div class="search-container">
+            <form method="GET" action="{{ route('weight_logs.index') }}">
+                <input type="date" name="start_date" value="{{ request('start_date') }}" class="search-input">
+                <span class="search-separator">~</span>
+                <input type="date" name="end_date" value="{{ request('end_date') }}" class="search-input">
+                <button type="submit" class="search-button">検索</button>
+            </form>
         </div>
 
-        <div class="pagination">
-            {{ $products->appends(request()->query())->links() }}
+        {{-- データ追加ボタン --}}
+        <div class="add-data-container">
+            <a href="#modal-target" class="add-data-button">データ追加</a>
         </div>
+    </div>
+
+    <!-- モーダルウィンドウ -->
+<div class="modal" id="modal-target">
+    <a href="#" class="modal-overlay"></a>
+    <div class="modal__inner">
+        <div class="modal__content">
+            <h2>Weight Logを追加</h2>
+            <form action="{{ route('weight_logs.store') }}" method="post">
+                @csrf
+
+                <label for="date">日付 <span class="required">必須</span></label>
+                <input type="date" name="date" value="{{ old('date', now()->format('Y-m-d')) }}">
+                @error('date')<p class="error">{{ $message }}</p>@enderror
+
+                <label for="weight">体重 <span class="required">必須</span></label>
+                <input type="text" name="weight" value="{{ old('weight') }}" placeholder="50.0" pattern="^\d{1,4}(\.\d{1})?$">
+                @error('weight')<p class="error">{{ $message }}</p>@enderror
+
+                <label for="calories">摂取カロリー <span class="required">必須</span></label>
+                <input type="number" name="calories" value="{{ old('calories') }}" placeholder="1200">
+                @error('calories')<p class="error">{{ $message }}</p>@enderror
+
+                <label for="exercise_time">運動時間 <span class="required">必須</span></label>
+                <input type="time" name="exercise_time" value="{{ old('exercise_time') }}" placeholder="00:00">
+                @error('exercise_time')<p class="error">{{ $message }}</p>@enderror
+
+                <label for="exercise_content">運動内容</label>
+                <textarea name="exercise_content" maxlength="120" placeholder="運動内容を追加">{{ old('exercise_content') }}</textarea>
+                @error('exercise_content')<p class="error">{{ $message }}</p>@enderror
+
+                <div class="button-group">
+                    <a href="#" class="cancel">戻る</a>
+                    <button type="submit" class="register">登録</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (session('showModal'))
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('modal-target').style.display = 'block';
+        });
+    </script>
+@endif
+
+    {{-- 体重データ一覧 --}}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>体重</th>
+                <th>食事摂取カロリー</th>
+                <th>運動時間</th>
+                <th>編集</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($weightLogs as $log)
+                <tr>
+                    <td>{{ $log->date }}</td>
+                    <td>{{ $log->weight }} kg</td>
+                    <td>{{ $log->calories }} cal</td>
+                    <td>{{ $log->exercise_time }}</td>
+                    <td>
+                        <a href="{{ route('weight_logs.edit', $log->id) }}" class="edit-button">
+                            <img src="{{ asset('storage/pencil.png') }}" alt="編集">
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    {{-- ページネーション --}}
+    <div class="pagination-container">
+        {{ $weightLogs->links() }}
     </div>
 </div>
 @endsection

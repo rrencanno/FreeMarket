@@ -1,0 +1,120 @@
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: left;
+    font-size: 24px;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.weight {
+    display: flex;
+    position: relative;
+}
+
+.weight input {
+    width: 95%;
+}
+
+.weight span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.calories {
+    display: flex;
+    position: relative;
+}
+
+.calories input {
+    width: 95%;
+}
+
+.calories span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+/*ボタングループ*/
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.buttons>*:first-child {
+    margin-left: 20%;
+}
+
+.buttons>*:not(:last-child) {
+    /* 最後の子要素以外の要素にスタイルを適用 */
+    margin-right: 10px;
+    width: 30%;
+    height: 40px;
+    font-size: 16px;
+}
+
+.back-btn {
+    background: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.update-btn {
+    background: linear-gradient(to right, #D88BC2, #FFC0CB);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.delete-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

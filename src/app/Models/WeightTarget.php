@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductSeason extends Pivot
+class WeightTarget extends Model
 {
     use HasFactory;
 
-    protected $table = 'product_season';
+    protected $table = 'weight_target';
 
     protected $fillable = [
-        'product_id',
-        'season_id',
+        'user_id',
+        'target_weight',
     ];
 }
