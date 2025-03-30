@@ -48,10 +48,6 @@
 /* 検索フォーム */
 .search-container {
     flex-grow: 1;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px; */
 }
 
 .search-input {
@@ -100,9 +96,6 @@
 /* データ追加ボタン */
 .add-data-container {
     flex-shrink: 0;
-    /* display: flex;
-    justify-content: center;
-    margin-bottom: 15px; */
 }
 
 .add-data-button {
