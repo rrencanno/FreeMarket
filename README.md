@@ -32,7 +32,7 @@
 
 ## 使用技術 (実行環境)
 
-- **PHP** 7.4.9
+- **PHP** 8.1.32
 - **Laravel** 8.83.8
 - **MySQL** 8.0.26
 
@@ -44,4 +44,6 @@
 ## URL
 
 - **phpMyAdmin**：[http://localhost:8080](http://localhost:8080)
-- **商品一覧画面**：[http://localhost/products](http://localhost/products)
+- **会員登録画面**：[http://localhost/register/step1](http://localhost/register/step1)
+- **ログイン画面** : [http://localhost/login](http://localhost/login)
+- **管理画面** : [http://localhost/weight_logs](http://localhost/weight_logs)
