@@ -19,10 +19,12 @@
     `.env` ファイルの環境変数を変更:
 
     ```
-    ・12行目 → DB_HOST = mysql
-    ・14行目 → DB_DATABASE = laravel_db
-    ・15行目 → DB_USERNAME = laravel_user
-    ・16行目 → DB_PASSWORD = laravel_pass
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel_db
+    DB_USERNAME=laravel_user
+    DB_PASSWORD=laravel_pass
     ```
 
 4. `php artisan key:generate`

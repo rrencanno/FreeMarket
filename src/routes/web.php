@@ -24,5 +24,5 @@ Route::delete('/weight_logs/{weightLogId}', [WeightLogController::class, 'destro
 Route::get('/weight_logs/target_setting', [WeightLogController::class, 'editTargetWeight'])
     ->name('weight_logs.target_setting');
 
-Route::put('/weight_logs/target_setting', [WeightLogController::class, 'updateTargetWeight'])
+Route::post('/weight_logs/target_setting', [WeightLogController::class, 'updateTargetWeight'])
     ->name('weight_logs.target_setting.update');

@@ -6,7 +6,7 @@
 }
 
 .target-setting-box {
-    width: 40%;
+    max-width: 300px;
     background: #fff;
     padding: 30px;
     border-radius: 10px;

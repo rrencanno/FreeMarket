@@ -11,7 +11,6 @@
 
         <form action="{{ route('weight_logs.target_setting.update') }}" method="POST">
             @csrf
-            @method('PUT')
             <div class="input-group">
                 <input type="text" name="target_weight" value="{{ old('target_weight', $targetWeight->target_weight ?? '') }}">
                 <span>kg</span>
