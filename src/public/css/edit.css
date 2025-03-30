@@ -71,19 +71,11 @@ textarea {
     margin-top: 20px;
 }
 
-.buttons>*:first-child {
-    margin-left: 20%;
-}
-
-.buttons>*:not(:last-child) {
-    /* 最後の子要素以外の要素にスタイルを適用 */
-    margin-right: 10px;
+.back-btn {
     width: 30%;
     height: 40px;
     font-size: 16px;
-}
-
-.back-btn {
+    margin-right: 10px;
     background: #ccc;
     color: #333;
     padding: 10px 20px;
@@ -93,6 +85,9 @@ textarea {
 }
 
 .update-btn {
+    width: 30%;
+    height: 40px;
+    font-size: 16px;
     background: linear-gradient(to right, #D88BC2, #FFC0CB);
     color: white;
     padding: 10px 20px;
@@ -101,11 +96,15 @@ textarea {
     cursor: pointer;
 }
 
+.delete-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .delete-btn {
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: auto;
 }
 
 .delete-btn img {

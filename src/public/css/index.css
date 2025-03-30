@@ -83,6 +83,20 @@
     background: #c277af;
 }
 
+.reset-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.reset-button:hover {
+    background-color: #e0e0e0;
+}
+
 /* データ追加ボタン */
 .add-data-container {
     flex-shrink: 0;
@@ -264,23 +278,43 @@ textarea {
     margin-top: 20px;
 }
 
-.pagination a {
-    padding: 8px 12px;
+nav ul {
+    display: flex;
+}
+
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
     margin: 0 5px;
+}
+
+.pagination li a,
+.pagination li span {
+    padding: 8px 12px;
     text-decoration: none;
     color: #666;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+    display: inline-block;
 }
 
-.pagination a.active {
+.pagination li.active span {
     background: #D88BC2;
     color: white;
     border: none;
 }
 
-.pagination a:hover {
+.pagination li a:hover {
     background: #c277af;
     color: white;
+}
+
+.pagination li.disabled span {
+    color: #ccc;
+    border-color: #eee;
 }

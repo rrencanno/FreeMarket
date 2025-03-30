@@ -29,6 +29,10 @@
                 <span class="search-separator">~</span>
                 <input type="date" name="end_date" value="{{ request('end_date') }}" class="search-input">
                 <button type="submit" class="search-button">検索</button>
+
+                @if (request('start_date') || request('end_date'))
+                    <a href="{{ route('weight_logs.index') }}" class="reset-button">リセット</a>
+                @endif
             </form>
         </div>
 
@@ -76,13 +80,6 @@
     </div>
 </div>
 
-@if (session('showModal'))
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById('modal-target').style.display = 'block';
-        });
-    </script>
-@endif
 
     {{-- 体重データ一覧 --}}
     <table class="data-table">
@@ -114,7 +111,7 @@
 
     {{-- ページネーション --}}
     <div class="pagination-container">
-        {{ $weightLogs->links() }}
+        {{ $weightLogs->links('pagination::bootstrap-4') }}
     </div>
 </div>
 @endsection

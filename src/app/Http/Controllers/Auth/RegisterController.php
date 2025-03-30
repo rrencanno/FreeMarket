@@ -45,7 +45,7 @@ class RegisterController extends Controller
             'user_id' => Auth::id(),
             'weight' => $request->current_weight,
             'date' => now()->toDateString(),
-            'calories' => rand(1000, 3000), // 例：デフォルト値をランダムに設定
+            'calories' => 0, //デフォルト値
             'exercise_time' => '00:00:00', // 例：デフォルト値を設定
             'exercise_content' => '',
         ]);

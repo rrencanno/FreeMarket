@@ -19,7 +19,7 @@ Route::get('/weight_logs', [WeightLogController::class, 'index'])->name('weight_
 Route::post('/weight_logs', [WeightLogController::class, 'store'])->name('weight_logs.store');
 
 Route::get('/weight_logs/{weightLogId}/edit', [WeightLogController::class, 'edit'])->name('weight_logs.edit');
-Route::post('/weight_logs/{weightLogId}', [WeightLogController::class, 'update'])->name('weight_logs.update');
+Route::put('/weight_logs/{weightLogId}', [WeightLogController::class, 'update'])->name('weight_logs.update');
 Route::delete('/weight_logs/{weightLogId}', [WeightLogController::class, 'destroy'])->name('weight_logs.destroy');
 Route::get('/weight_logs/target_setting', [WeightLogController::class, 'editTargetWeight'])
     ->name('weight_logs.target_setting');

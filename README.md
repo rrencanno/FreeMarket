@@ -4,7 +4,7 @@
 
 ### Docker ビルド
 
-1. `git clone https://github.com/rrencanno/mogitate_site`
+1. `git clone https://github.com/rrencanno/Pigly`
 2. `docker-compose up -d --build`
 
 > **Note**
@@ -29,30 +29,6 @@
 5. `php artisan migrate`
 6. `php artisan db:seed`
 7. `php artisan storage:link`
-8. `exit`
-9. `rsync -av img/ src/storage/app/public/`
-10. この項は「商品登録」や「商品詳細ページでの画像の変更」時に、画像ファイルが2MB以上になる場合に実行する。
-
-    ※ 画像ファイルが2MB以上になると413 Request Entity Too Largeエラーが発生するため
-
-    ・`docker exec -it mogitate_site-nginx-1 bash`
-
-    ・`apt update && apt install nano`
-
-    ・`nano /etc/nginx/conf.d/default.conf`
-
-    ・default.conf に以下を追加
-
-    ```
-    server {
-        ...
-        client_max_body_size 20M;  # 20MBまでアップロード可能
-    }
-    ```
-
-    ・`exit`
-
-    ・`docker exec -it mogitate_site-nginx-1 nginx -s reload`
 
 ## 使用技術 (実行環境)
 
@@ -61,7 +37,9 @@
 - **MySQL** 8.0.26
 
 ## ER 図
-![ER図][mogitate_site.drawio.png](mogitate_site.drawio.png)
+![ER図]
+
+![PiGLy](PiGLy.png)
 
 ## URL
 
