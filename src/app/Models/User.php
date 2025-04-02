@@ -8,11 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'avatar', 'post_code', 'address', 'phone_number'];
+
+    public function products() {
+        return $this->hasMany(Product::class);
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
 }

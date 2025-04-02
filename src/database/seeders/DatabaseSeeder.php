@@ -16,6 +16,5 @@ class DatabaseSeeder extends Seeder
     {
             $this->call(UsersTableSeeder::class);
             $this->call(WeightTargetTableSeeder::class);
-            WeightLog::factory()->count(35)->create();
     }
 }
