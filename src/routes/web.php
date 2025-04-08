@@ -3,25 +3,48 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\WeightLogController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\RedirectIfProfileIncomplete;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\FavoriteController;
 use Laravel\Fortify\Fortify;
 
 
-Route::get('/register/step1', [RegisterController::class, 'showRegistrationForm'])->name('register.step1');
-Route::post('/register/step1', [RegisterController::class, 'register']);
-Route::get('/register/step2', [RegisterController::class, 'create'])->name('register.step2');
-Route::post('/register/step2', [RegisterController::class, 'store'])->name('register.step2.store');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.attempt');
+Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/weight_logs', [WeightLogController::class, 'index'])->name('weight_logs.index');
-Route::post('/weight_logs', [WeightLogController::class, 'store'])->name('weight_logs.store');
-Route::get('/weight_logs/{weightLogId}/edit', [WeightLogController::class, 'edit'])->name('weight_logs.edit');
-Route::put('/weight_logs/{weightLogId}', [WeightLogController::class, 'update'])->name('weight_logs.update');
-Route::delete('/weight_logs/{weightLogId}', [WeightLogController::class, 'destroy'])->name('weight_logs.destroy');
-Route::get('/weight_logs/target_setting', [WeightLogController::class, 'editTargetWeight'])
-    ->name('weight_logs.target_setting');
-Route::post('/weight_logs/target_setting', [WeightLogController::class, 'updateTargetWeight'])
-    ->name('weight_logs.target_setting.update');
+// Route::middleware(['auth', RedirectIfProfileIncomplete::class])->group(function () {
+//     Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('profile.edit');
+//     Route::post('/mypage/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+// });
+
+Route::get('/', [ItemController::class, 'index'])->name('top');
+Route::get('/item/{id}', [ItemController::class, 'show'])->name('item_show');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/favorite/{id}', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+});
+
+Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
+
+Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
+Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+
+Route::get('/mypage', [ProfileController::class, 'mypage'])->name('mypage');
+// Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('mypage.profile');
+// Route::post('/mypage/profile/update', [ProfileController::class, 'update'])->name('mypage.profile.update');
+// Route::match(['patch', 'post'], '/mypage/profile/update', [ProfileController::class, 'update'])->name('mypage.profile.update');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('mypage.profile');
+    Route::post('/mypage/profile/update', [ProfileController::class, 'update'])->name('mypage.profile.update');
+});
+
+Route::get('/sell', [ItemController::class, 'create'])->name('sell');
+Route::post('/sell', [ItemController::class, 'store'])->name('sell.store');

@@ -14,32 +14,24 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * ログイン処理
-     */
+    // ログイン処理
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('weight_logs.index'); // ✅ ログイン成功時のリダイレクト先
+            return redirect()->route('top'); // ログイン後の遷移先
         }
 
         return back()->withErrors([
-            'email' => 'メールアドレスまたはパスワードが間違っています。',
-        ])->onlyInput('email');
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+        ]);
     }
 
-    /**
-     * ログアウト処理
-     */
+    // ログアウト処理
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login'); // ✅ ログアウト後のリダイレクト先
+        return redirect()->route('login');
     }
 }

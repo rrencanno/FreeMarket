@@ -1,71 +1,73 @@
-.header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 30px;
-    background-color: #fff;
-    border-bottom: 2px solid #eee;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.header__logo h1 {
-    color: #d896ce;
-    font-size: 36px;
-    font-weight: normal;
-    text-align: left;
+/* ロゴ */
+.logo h1 {
     margin: 0;
-    padding: 5px 0 0 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* ナビゲーション */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 検索フォーム */
+.header-nav form {
+    display: flex;
+    align-items: center;
     background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 20px;
 }
 
-.header__buttons {
-    display: flex;
-    gap: 15px;
-}
-
-.button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color: #f4f4f4;
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.button:hover {
-    background-color: #e0e0e0;
-}
-
-.button i {
-    font-size: 16px;
-    color: #888;
-}
-
-.logout-form {
-    display: inline-block;
-}
-
-.logout-form button {
+.header-nav input[type="text"] {
     border: none;
-    background: #f4f4f4;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
+    outline: none;
+    padding: 5px;
+}
+
+.header-nav button {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    margin-left: 5px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    border-radius: 3px;
 }
 
-.logout-form button i {
-    font-size: 16px;
-    color: #888;
+/* 各リンク（ログアウト・マイページ・出品） */
+.header-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-.logout-form button:hover {
-    background: #e0e0e0;
+.header-nav a:hover {
+    color: #ccc;
+}
+
+/* メインコンテンツにヘッダー分の余白を */
+main {
+    margin-top: 90px;
 }
