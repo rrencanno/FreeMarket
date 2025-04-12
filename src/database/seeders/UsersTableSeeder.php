@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
             'post_code' => '123-4567',
             'address' => '東京都新宿区西新宿2-8-1',
-            'phone_number' => '09012345678',
         ]);
     }
 }

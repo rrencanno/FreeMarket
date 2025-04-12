@@ -14,7 +14,6 @@ class ShippingAddresses extends Migration
             $table->string('post_code');
             $table->string('address');
             $table->string('building_name')->nullable();
-            $table->string('phone_number');
             $table->timestamps();
         });
     }

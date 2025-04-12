@@ -14,7 +14,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar' => ['nullable', 'image', 'mimes:jpeg,png'],
+            'image_url' => ['nullable', 'image', 'mimes:jpeg,png'],
             'name' => ['required', 'string', 'max:255'],
             'post_code' => ['required', 'regex:/^\d{3}-\d{4}$/'],
             'address' => ['required', 'string', 'max:255'],
@@ -25,8 +25,8 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'avatar.image' => '画像ファイルをアップロードしてください。',
-            'avatar.mimes' => 'プロフィール画像は「.jpeg」または「.png」のみ対応しています。',
+            'image_url.image' => '画像ファイルをアップロードしてください。',
+            'image_url.mimes' => 'プロフィール画像は「.jpeg」または「.png」のみ対応しています。',
             'name.required' => 'ユーザー名を入力してください。',
             'name.max' => 'ユーザー名は255文字以内で入力してください。',
             'post_code.required' => '郵便番号を入力してください。',

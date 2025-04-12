@@ -3,36 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\AddressRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\ShippingAddress;
+use App\Models\Purchase;
+use App\Models\User;
 
 class PurchaseController extends Controller
 {
     public function show($item_id)
     {
-        $product = Product::with('product_images')->findOrFail($item_id);
-        $address = Auth::user()->shippingAddress;
+        $product = Product::with('purchase')->findOrFail($item_id);
+        $user = Auth::user();
+
+        // shipping_addresses がなければ users テーブルの情報を使う
+        $address = $user->shippingAddress ?? (object)[
+            'post_code' => $user->post_code,
+            'address' => $user->address,
+            'building_name' => $user->building_name,
+        ];
 
         return view('purchase', compact('product', 'address'));
     }
 
-    public function store(Request $request, $item_id)
+    public function store(PurchaseRequest $request, $item_id)
     {
-        $request->validate([
-            'payment_method' => 'required|in:コンビニ払い,カード払い',
-        ]);
-
         $product = Product::findOrFail($item_id);
         $user = Auth::user();
 
-        $transaction = new Transaction();
-        $transaction->user_id = $user->id;
-        $transaction->product_id = $product->id;
-        $transaction->shipping_address_id = $user->shipping_address_id;
-        $transaction->payment_method = $request->payment_method;
-        $transaction->amount = $product->price;
-        $transaction->save();
+        $purchase = new Purchase();
+        $purchase->user_id = $user->id;
+        $purchase->product_id = $product->id;
+        $purchase->shipping_address_id = $user->shipping_address_id;
+        $purchase->payment_method = $request->payment_method;
+        $purchase->amount = $product->price;
+        $purchase->save();
 
         return redirect('/mypage?tab=buy')->with('success', '購入が完了しました');
     }
@@ -41,20 +48,15 @@ class PurchaseController extends Controller
     public function editAddress($item_id)
     {
         $address = Auth::user()->shippingAddress;
+
         return view('purchase_address', [
             'item_id' => $item_id,
             'address' => $address
         ]);
     }
 
-    public function updateAddress(Request $request, $item_id)
+    public function updateAddress(AddressRequest $request, $item_id)
     {
-        $request->validate([
-            'post_code' => 'required|string|max:10',
-            'address' => 'required|string|max:255',
-            'building_name' => 'nullable|string|max:255',
-        ]);
-
         $user = Auth::user();
         $address = $user->shippingAddress;
 

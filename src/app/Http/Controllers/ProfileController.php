@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
+use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -17,16 +18,25 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($request->hasFile('avatar')) {
-            $path = $request->file('avatar')->store('profiles', 'public');
-            $user->avatar = $path;
+        if ($request->hasFile('image_url')) {
+            $path = $request->file('image_url')->store('profiles', 'public');
+            $user->image_url = $path;
         }
 
+        // ユーザー情報の更新
         $user->name = $request->name;
         $user->post_code = $request->post_code;
         $user->address = $request->address;
         $user->building_name = $request->building_name;
         $user->save();
+
+        // ShippingAddressの更新
+        $address = $user->shippingAddress ?? new ShippingAddress();
+        $address->user_id = $user->id;
+        $address->post_code = $request->post_code;
+        $address->address = $request->address;
+        $address->building_name = $request->building_name;
+        $address->save();
 
         return redirect()->route('top')->with('success', 'プロフィールを更新しました！');
     }

@@ -11,17 +11,17 @@
     <form method="POST" action="{{ route('mypage.profile.update') }}" enctype="multipart/form-data">
         @csrf
         <div class="profile-image-area">
-            @if ($user->avatar)
-                <img id="preview" src="{{ asset('storage/' . $user->avatar) }}" alt="プロフィール画像" class="profile-image">
+            @if ($user->image_url)
+                <img id="preview" src="{{ asset('storage/' . $user->image_url) }}" alt="プロフィール画像" class="profile-image">
             @else
                 <div id="preview" class="profile-placeholder"></div>
             @endif
 
             <label class="image-select-button">
                 画像を選択する
-                <input type="file" name="avatar" id="profile_image_input" hidden>
+                <input type="file" name="image_url" id="profile_image_input" hidden>
             </label>
-            @error('avatar')
+            @error('image_url')
                 <p class="error">{{ $message }}</p>
             @enderror
         </div>

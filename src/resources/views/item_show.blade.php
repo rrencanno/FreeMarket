@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/item.show.css') }}">
+<link rel="stylesheet" href="{{ asset('css/item_show.css') }}">
 @endsection
 
 @section('content')
 <div class="item-detail">
     <div class="item-left">
-        <img src="{{ $product->image_url ?? 'https://via.placeholder.com/300x300?text=商品画像' }}" alt="商品画像">
+        <img src="{{ asset('storage/' . $product->image_url) ?? 'https://via.placeholder.com/300x300?text=商品画像' }}" alt="商品画像">
     </div>
 
     <div class="item-right">
@@ -51,10 +51,10 @@
             <h3>コメント({{ $product->comments->count() }})</h3>
             @foreach($product->comments as $comment)
                 <div class="comment">
-                    <img src="{{ $comment->user->profile_image ?? 'https://via.placeholder.com/40' }}" alt="user" class="icon">
+                    <img src="{{ $comment->user->image_url ? asset('storage/' . $comment->user->image_url) : 'https://via.placeholder.com/40' }}" alt="user" class="icon">
                     <div>
                         <p class="username">{{ $comment->user->name }}</p>
-                        <p class="body">{{ $comment->body }}</p>
+                        <p class="comment_body">{{ $comment->comment }}</p>
                     </div>
                 </div>
             @endforeach
@@ -63,9 +63,9 @@
         <form action="{{ route('comment.store', $product->id) }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="body">商品へのコメント</label>
-                <textarea name="body" id="body" rows="4">{{ old('body') }}</textarea>
-                @error('body')
+                <label for="comment">商品へのコメント</label>
+                <textarea name="comment" id="comment" rows="4">{{ old('comment') }}</textarea>
+                @error('comment')
                     <p class="error">{{ $message }}</p>
                 @enderror
             </div>

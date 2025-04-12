@@ -26,9 +26,11 @@
 }
 
 .address-form button {
+    width: 100%;
     background-color: #ef6c60;
     color: white;
     padding: 10px 30px;
+    margin-top: 20px;
     border: none;
     border-radius: 6px;
     font-size: 16px;

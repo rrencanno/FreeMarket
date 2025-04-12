@@ -10,18 +10,24 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'avatar', 'post_code', 'address', 'phone_number'];
+    protected $fillable = ['name', 'email', 'password', 'image_url', 'post_code', 'address', 'building_name', 'phone_number'];
 
     public function products() {
         return $this->hasMany(Product::class);
     }
 
-    public function orders() {
-        return $this->hasMany(Order::class);
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 
     public function purchasedProducts()
+    {
+        return $this->belongsToMany(Product::class, 'purchases');
+    }
+
+    public function shippingAddress()
 {
-    return $this->belongsToMany(Product::class, 'transactions');
+    return $this->hasOne(ShippingAddress::class);
 }
 }

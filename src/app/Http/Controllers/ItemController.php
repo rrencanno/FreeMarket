@@ -33,6 +33,15 @@ class ItemController extends Controller
         return view('top', compact('products', 'tab', 'search'));
     }
 
+    // 商品詳細画面
+    public function show($id)
+    {
+        $product = Product::with(['favorites', 'comments.user', 'categories'])
+            ->findOrFail($id);
+
+        return view('item_show', compact('product'));
+    }
+
     // 出品画面
     public function create()
     {
@@ -50,7 +59,7 @@ class ItemController extends Controller
             'condition' => 'required|in:良好,目立った傷や汚れなし,やや傷や汚れあり,状態が悪い',
         ]);
 
-        $path = $request->file('image')->store('products', 'public');
+        $product->image = $request->file('image_url')->store('products', 'public');
 
         Product::create([
             'user_id' => Auth::id(),

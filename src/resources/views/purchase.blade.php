@@ -7,47 +7,73 @@
 @section('content')
 <div class="purchase-container">
     <div class="left-section">
-        <img src="{{ asset('storage/' . $product->product_images[0]->path) }}" alt="商品画像" class="product-image">
-        <h2>{{ $product->name }}</h2>
-        <p class="price">¥{{ number_format($product->price) }}</p>
+        <div class="product-info-row">
+            <img src="{{ asset('storage/' . $product->image_url) }}" alt="商品画像" class="product-image">
+            <div class="product-details">
+                <h2>{{ $product->name }}</h2>
+                <p class="price">¥{{ number_format($product->price) }}</p>
+            </div>
+        </div>
 
         <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
             @csrf
             <div class="section">
                 <label for="payment_method">支払い方法</label>
-                <select name="payment_method" id="payment_method" required>
+                <select name="payment_method" id="payment_method">
                     <option value="">選択してください</option>
-                    <option value="コンビニ払い">コンビニ払い</option>
-                    <option value="カード払い">カード払い</option>
+                    <option value="コンビニ払い" {{ old('payment_method') == 'コンビニ払い' ? 'selected' : '' }}>コンビニ払い</option>
+                    <option value="カード払い" {{ old('payment_method') == 'カード払い' ? 'selected' : '' }}>カード払い</option>
                 </select>
             </div>
+            @error('payment_method')
+                <p class="error">{{ $message }}</p>
+            @enderror
 
             <div class="section">
-                <label>配送先</label>
-                <p>〒 {{ $address->postal_code }}</p>
-                <p>{{ $address->address }} {{ $address->building }}</p>
-                <a href="{{ route('purchase.address.edit', ['item_id' => $product->id]) }}" class="edit-link">変更する</a>
+                <div class="section-address">
+                    <div class="section-header">
+                        <label>配送先</label>
+                        <a href="{{ route('purchase.address.edit', ['item_id' => $product->id]) }}" class="edit-link">変更する</a>
+                    </div>
+                    <p>〒 {{ $address->post_code }}</p>
+                    <p>{{ $address->address }} {{ $address->building_name }}</p>
+                </div>
             </div>
 
-            <button type="submit" class="purchase-button">購入する</button>
+            <!-- フォームはここで終了 -->
         </form>
     </div>
 
     <div class="right-section">
-        <div class="summary">
-            <p>商品代金</p>
-            <p class="price">¥{{ number_format($product->price) }}</p>
+        <div class="summary-section">
+            <div class="summary">
+                <p>商品代金</p>
+                <p class="price">¥{{ number_format($product->price) }}</p>
+            </div>
+            <div class="summary">
+                <p>支払い方法</p>
+                <p id="summary-method">未選択</p>
+            </div>
         </div>
-        <div class="summary">
-            <p>支払い方法</p>
-            <p id="summary-method">未選択</p>
-        </div>
+
+        <!-- ボタンを右下に設置しつつフォーム送信できるようにする -->
+        <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
+            @csrf
+            <input type="hidden" name="payment_method_hidden" id="payment_method_hidden">
+            <button type="submit" class="purchase-button">購入する</button>
+        </form>
     </div>
 </div>
 
+<!-- 支払い方法選択に合わせて右の表示＆hiddenフィールドを更新 -->
 <script>
-    document.getElementById('payment_method').addEventListener('change', function () {
-        document.getElementById('summary-method').textContent = this.value;
+    const select = document.getElementById('payment_method');
+    const summary = document.getElementById('summary-method');
+    const hidden = document.getElementById('payment_method_hidden');
+
+    select.addEventListener('change', function () {
+        summary.textContent = this.value || '未選択';
+        hidden.value = this.value;
     });
 </script>
 @endsection

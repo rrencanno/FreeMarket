@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Transactions extends Migration
+class Purchases extends Migration
 {
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // 購入者
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
@@ -22,6 +22,6 @@ class Transactions extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('purchases');
     }
 }
