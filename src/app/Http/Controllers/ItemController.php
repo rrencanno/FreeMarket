@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Http\Requests\ExhibitionRequest;
 use App\Models\Product;
 use App\Models\Favorite;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,19 +19,30 @@ class ItemController extends Controller
         $search = $request->query('search');
 
         if ($tab === 'mylist') {
+            if (!Auth::check()) {
+                // ログインしていない場合は空の商品リストを返す
+                $products = new LengthAwarePaginator([], 0, 8);
+                return view('top', compact('products', 'tab', 'search'));
+            }
+
             $user = Auth::user();
             $query = Product::whereHas('favorites', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
             });
         } else {
             $query = Product::query();
+
+            // 自分が出品した商品は除外
+            if (Auth::check()) {
+                $query->where('user_id', '!=', Auth::id());
+            }
         }
 
-        if ($search) {
+        if (isset($query) && $search) {
             $query->where('name', 'LIKE', "%{$search}%");
         }
 
-        $products = $query->paginate(9);
+        $products = isset($query) ? $query->paginate(8) : new LengthAwarePaginator([], 0, 8);
 
         return view('top', compact('products', 'tab', 'search'));
     }
@@ -39,6 +53,10 @@ class ItemController extends Controller
         $product = Product::with(['favorites', 'comments.user', 'categories'])
             ->findOrFail($id);
 
+        // if ($product->comments->isNotEmpty()) {
+        //     dd($product->comments->first()->user->image_url);
+        // }
+
         return view('item_show', compact('product'));
     }
 
@@ -48,29 +66,31 @@ class ItemController extends Controller
         return view('sell');
     }
 
-    public function store(Request $request)
+    public function store(ExhibitionRequest $request)
     {
-        $request->validate([
-            'image' => 'required|image',
-            'name' => 'required|string|max:255',
-            'brand' => 'nullable|string|max:255',
-            'description' => 'required|string|max:1000',
-            'price' => 'required|numeric|min:0',
-            'condition' => 'required|in:良好,目立った傷や汚れなし,やや傷や汚れあり,状態が悪い',
-        ]);
+        $path = $request->file('image')->store('products', 'public');
 
-        $product->image = $request->file('image_url')->store('products', 'public');
-
-        Product::create([
+        // 商品データ作成
+        $product = Product::create([
             'user_id' => Auth::id(),
             'name' => $request->name,
             'brand' => $request->brand,
             'description' => $request->description,
             'price' => $request->price,
             'condition' => $request->condition,
-            'image' => $path,
+            'image_url' => $path,
         ]);
 
+        // 中間テーブル登録（もしやってたら）
+        $categories = $request->input('categories', []);
+        if (!empty($categories)) {
+            foreach ($categories as $categoryName) {
+                $category = Category::where('name', $categoryName)->first();
+                if ($category) {
+                    $product->categories()->attach($category->id);
+                }
+            }
+        }
         return redirect()->route('top')->with('success', '商品を出品しました！');
     }
 }

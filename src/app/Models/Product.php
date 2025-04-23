@@ -32,12 +32,13 @@ class Product extends Model
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
+    // いいね済みかどうか判定する関数
     public function isFavoritedBy($user)
     {
-        return $this->favorites->where('user_id', $user->id)->isNotEmpty();
+        return $this->favorites->contains($user);
     }
 
     public function comments()

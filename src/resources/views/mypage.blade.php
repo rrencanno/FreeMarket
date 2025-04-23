@@ -7,7 +7,7 @@
 @section('content')
 <div class="mypage-container">
     <div class="profile-section">
-        <img src="{{ asset('storage/' . ($user->profile_image ?? 'default.png')) }}" class="profile-icon">
+        <img src="{{ asset('storage/' . ($user->image_url)) }}" class="profile-icon">
         <h2>{{ $user->name }}</h2>
         <a href="{{ route('mypage.profile') }}" class="edit-profile-btn">プロフィールを編集</a>
     </div>
@@ -21,11 +21,15 @@
         @foreach ($products as $product)
         <div class="product-item">
             <a href="{{ route('item_show', $product->id) }}">
-                <img src="{{ asset('storage/' . $product->product_images[0]->path) }}" alt="商品画像">
+                @if (!empty($product->image_url))
+                    <img src="{{ asset('storage/' . $product->image_url) }}" alt="商品画像">
+                    <p class="product-name">{{ $product->name }}</p>
+                @else
+                    <img src="{{ asset('storage/default.png') }}" alt="デフォルト画像">
+                @endif
             </a>
-            <p>{{ $product->name }}</p>
         </div>
-        @endforeach
+    @endforeach
     </div>
 
     <div class="pagination">

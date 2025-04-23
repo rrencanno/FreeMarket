@@ -30,7 +30,14 @@
             <span>💬 {{ $product->comments->count() }}</span>
         </div>
 
-        <a href="{{ route('purchase.show', $product->id) }}" class="buy-btn">購入手続きへ</a>
+        @auth
+            <a href="{{ route('purchase.show', $product->id) }}" class="buy-btn">購入手続きへ</a>
+        @else
+            <div class="buy-hint">
+                <a href="{{ route('login') }}" class="buy-btn">ログインして購入手続きへ</a>
+                <p class="buy-hint-text">ログインすると購入手続きに進めます</p>
+            </div>
+        @endauth
 
         <div class="description">
             <h3>商品説明</h3>

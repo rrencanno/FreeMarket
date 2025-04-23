@@ -61,6 +61,7 @@
         <button type="submit" class="submit-button">更新する</button>
     </form>
 </div>
+@endsection
 
 @section('js')
 <script>

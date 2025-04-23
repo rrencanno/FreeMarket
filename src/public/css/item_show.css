@@ -20,7 +20,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .item-right h2 {
@@ -67,6 +66,26 @@
     display: inline-block;
     width: fit-content;
 }
+
+/*未ログイン時の購入ボタン*/
+.buy-hint .buy-btn {
+    background-color: #f05b5b;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.buy-hint-text {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+/***/
 
 .description h3,
 .info h3,
@@ -144,4 +163,47 @@ textarea {
 .error {
     color: red;
     font-size: 13px;
+}
+
+/* === 💻 PC向け（1400px〜1540px） === */
+@media screen and (min-width: 1400px) and (max-width: 1540px) {
+    .item-show-container {
+        padding: 40px 40px;
+    }
+
+    .item-info .item-title {
+        font-size: 26px;
+    }
+}
+
+/* === 📱 タブレット向け（768〜850px） === */
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .item-show-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+    }
+
+    .item-image img {
+        max-width: 90%;
+    }
+
+    .item-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .item-title {
+        font-size: 24px;
+    }
+
+    .item-description {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .buy-btn {
+        margin-top: 20px;
+        width: 100%;
+    }
 }

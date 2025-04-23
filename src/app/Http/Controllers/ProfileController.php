@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\ShippingAddress;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function show()
     {
-        return view('profile.edit', ['user' => Auth::user()]);
+        return view('profile', ['user' => Auth::user()]);
     }
 
     public function update(ProfileRequest $request)
@@ -48,7 +49,11 @@ class ProfileController extends Controller
         $tab = $request->query('tab', 'sell');
 
         if ($tab === 'buy') {
-            $products = $user->purchasedProducts()->paginate(9);
+            $products = Product::whereIn('id', function ($query) use ($user) {
+                $query->select('product_id')
+                    ->from('purchases')
+                    ->where('user_id', $user->id);
+            })->paginate(8);
         } else {
             $products = $user->products()->paginate(9);
         }

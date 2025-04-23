@@ -31,9 +31,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/favorite/{id}', [FavoriteController::class, 'toggle'])->name('favorite.toggle');
 });
 
-Route::post('/comment/{product}', [CommentController::class, 'store'])->name('comment.store');
+Route::post('/comment/{product}', [CommentController::class, 'store'])
+    ->middleware('auth')
+    ->name('comment.store');
 
-Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])->name('purchase.show');
+Route::get('/purchase/{item_id}', [PurchaseController::class, 'show'])
+    ->middleware('auth')
+    ->name('purchase.show');
 Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 
 Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');

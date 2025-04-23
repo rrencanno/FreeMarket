@@ -14,10 +14,12 @@ class ExhibitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
-            'description' => ['required', 'string', 'max:255'],
             'image' => ['required', 'image', 'mimes:jpeg,png'],
-            'category_id' => ['required', 'exists:categories,id'],
+            'categories' => ['required', 'array', 'min:1'],
+            'categories.*' => ['string', 'exists:categories,name'],
+            'name' => ['required', 'string'],
+            'brand' => ['nullable', 'string'],
+            'description' => ['required', 'string', 'max:255'],
             'condition' => ['required'],
             'price' => ['required', 'numeric', 'min:0'],
         ];
@@ -26,14 +28,18 @@ class ExhibitionRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '商品名を入力してください。',
-            'description.required' => '商品説明を入力してください。',
-            'description.max' => '商品説明は255文字以内で入力してください。',
             'image.required' => '商品画像をアップロードしてください。',
             'image.image' => '画像ファイルをアップロードしてください。',
             'image.mimes' => '商品画像は「.jpeg」または「.png」のみ対応しています。',
-            'category_id.required' => '商品のカテゴリーを選択してください。',
-            'category_id.exists' => '選択されたカテゴリーは存在しません。',
+            'categories.required' => '商品のカテゴリーを1つ以上選択してください。',
+            'categories.array' => 'カテゴリーの形式が不正です。',
+            'categories.min' => '少なくとも1つのカテゴリーを選択してください。',
+            'categories.*.exists' => '選択されたカテゴリーは存在しません。',
+
+            'name.required' => '商品名を入力してください。',
+            'description.required' => '商品説明を入力してください。',
+            'description.max' => '商品説明は255文字以内で入力してください。',
+
             'condition.required' => '商品の状態を選択してください。',
             'price.required' => '商品価格を入力してください。',
             'price.numeric' => '商品価格は数値で入力してください。',
