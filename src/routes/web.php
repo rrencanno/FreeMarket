@@ -19,11 +19,6 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::middleware(['auth', RedirectIfProfileIncomplete::class])->group(function () {
-//     Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('profile.edit');
-//     Route::post('/mypage/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-// });
-
 Route::get('/', [ItemController::class, 'index'])->name('top');
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('item_show');
 
@@ -43,10 +38,13 @@ Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('
 Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
 Route::patch('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 
+// Stripe機能 //
+// Route::post('/purchase/{item_id}/checkout', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
+// Route::get('/purchase/success', [PurchaseController::class, 'success'])->name('purchase.success');
+// Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+
+
 Route::get('/mypage', [ProfileController::class, 'mypage'])->name('mypage');
-// Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('mypage.profile');
-// Route::post('/mypage/profile/update', [ProfileController::class, 'update'])->name('mypage.profile.update');
-// Route::match(['patch', 'post'], '/mypage/profile/update', [ProfileController::class, 'update'])->name('mypage.profile.update');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('mypage.profile');

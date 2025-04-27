@@ -31,6 +31,7 @@
 5. `php artisan migrate`
 6. `php artisan db:seed`
 7. `php artisan storage:link`
+8. `composer require stripe/stripe-php`
 
 ## 使用技術 (実行環境)
 

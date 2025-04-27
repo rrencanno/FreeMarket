@@ -7,9 +7,13 @@
 @section('content')
 <div class="mypage-container">
     <div class="profile-section">
-        <img src="{{ asset('storage/' . ($user->image_url)) }}" class="profile-icon">
-        <h2>{{ $user->name }}</h2>
-        <a href="{{ route('mypage.profile') }}" class="edit-profile-btn">プロフィールを編集</a>
+        <div class="profile-info">
+            <img src="{{ asset('storage/' . ($user->image_url)) }}" class="profile-icon">
+            <div class="profile-text">
+                <h2>{{ $user->name }}</h2>
+                <a href="{{ route('mypage.profile') }}" class="edit-profile-btn">プロフィールを編集</a>
+            </div>
+        </div>
     </div>
 
     <ul class="tabs">

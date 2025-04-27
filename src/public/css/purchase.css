@@ -102,8 +102,16 @@ h2 {
 .summary {
     display: flex;
     justify-content: space-between;
-    padding: 10px 50px;
+    align-items: center;
+    padding: 10px 30px;
     border: 1px solid #ccc;
+    min-height: 60px;
+    word-break: keep-all;
+}
+
+.summary p {
+    margin: 0;
+    white-space: nowrap;
 }
 
 .summary:first-of-type {
@@ -117,7 +125,7 @@ h2 {
 }
 
 /* 支払い情報右カラムをレスポンシブ対応 */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .purchase-container {
         flex-direction: column;
     }
