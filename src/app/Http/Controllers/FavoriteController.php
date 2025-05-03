@@ -13,6 +13,9 @@ class FavoriteController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($id);
 
+        // リレーションを更新
+        $user->load('favorites');
+
         if ($user->favorites->contains($product->id)) {
             $user->favorites()->detach($product->id);
         } else {

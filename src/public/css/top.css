@@ -178,13 +178,13 @@
 /***/
 
 /* レスポンシブデザイン */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .product-list {
         grid-template-columns: repeat(2, 250px);
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
     .product-list {
         grid-template-columns: 250px;
     }

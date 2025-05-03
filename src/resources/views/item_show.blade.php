@@ -18,7 +18,7 @@
         <div class="action-icons">
             <form action="{{ route('favorite.toggle', $product->id) }}" method="POST">
                 @csrf
-                <button type="submit" class="icon-btn">
+                <button type="submit" class="icon-btn {{ $product->isFavoritedBy(Auth::user()) ? 'favorited' : '' }}">
                     @if($product->isFavoritedBy(Auth::user()))
                         ★
                     @else

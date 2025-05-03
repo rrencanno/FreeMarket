@@ -15,7 +15,6 @@ class Purchases extends Migration
             $table->foreignId('shipping_address_id')->nullable()->constrained()->onDelete('set null');
             $table->string('payment_method');
             $table->decimal('amount', 10, 2);
-            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

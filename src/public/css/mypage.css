@@ -26,12 +26,10 @@
     display: flex;
     align-items: center;
     gap: 50px;
-    /* 名前とプロフィール編集ボタンの間を広めにする */
 }
 
 .profile-text h2 {
     margin: 0;
-    /* デフォルトの余白を消す */
 }
 
 .edit-profile-btn {
@@ -90,4 +88,25 @@
 .not-img {
     width: 100%;
     height:auto;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .mypage-container {
+        width: 90%;
+    }
+
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .edit-profile-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .product-list {
+        grid-template-columns: 1fr;
+    }
 }

@@ -125,7 +125,7 @@ h2 {
 }
 
 /* 支払い情報右カラムをレスポンシブ対応 */
-@media (max-width: 850px) {
+@media (max-width: 768px) {
     .purchase-container {
         flex-direction: column;
     }
