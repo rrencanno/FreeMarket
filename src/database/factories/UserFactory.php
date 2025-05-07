@@ -16,6 +16,9 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => bcrypt('password'), // 通常の検証用
+            'post_code' => '123-4567',
+            'address' => '東京都新宿区1-2-3',
+            'building_name' => 'テストビル101'
         ];
     }
 }

@@ -34,7 +34,6 @@
     cursor: pointer;
 }
 
-/* カテゴリーラベルボタン */
 .category-buttons {
     display: flex;
     flex-wrap: wrap;

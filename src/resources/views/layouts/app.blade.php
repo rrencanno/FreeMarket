@@ -19,7 +19,7 @@
     <header>
         <div class="logo">
             <a href="{{ route('top') }}" class="logo-link">
-                <h1>COACHTECH</h1>
+                <img src="{{ asset('storage/logo.svg') }}" alt="COACHTECHロゴ">
             </a>
         </div>
 
