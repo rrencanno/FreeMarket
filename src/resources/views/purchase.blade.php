@@ -6,7 +6,6 @@
 
 @section('content')
 <form action="{{ route('purchase.store', ['item_id' => $product->id]) }}" method="POST">
-    <!-- {{-- <form action="{{ route('purchase.checkout', ['item_id' => $product->id]) }}" method="POST"> --}} -->
     @csrf
     <div class="purchase-container">
         <div class="left-section">
@@ -59,7 +58,6 @@
     </div>
 </form>
 
-<!-- 支払い方法選択に合わせて右の表示＆hiddenフィールドを更新 -->
 <script>
     const select = document.getElementById('payment_method');
     const summary = document.getElementById('summary-method');

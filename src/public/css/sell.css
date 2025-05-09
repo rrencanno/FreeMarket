@@ -11,7 +11,6 @@
     margin-bottom: 2rem;
 }
 
-/* 商品画像のアップロードエリア */
 .image-upload .upload-box {
     border: 2px dashed #ccc;
     padding: 2rem;
@@ -21,7 +20,7 @@
     position: relative;
 }
 
-.upload-box input[type="file"] {
+.hidden-input {
     display: none;
 }
 
@@ -63,7 +62,6 @@
     transition: all 0.2s;
 }
 
-/* チェックされたときのスタイル */
 .category-label input[type="checkbox"]:checked+span {
     background-color: #f36c6c;
     color: #fff;
@@ -89,7 +87,6 @@ select {
     border-radius: 8px;
 }
 
-/* 価格の ¥ 記号付き入力 */
 .price-input-wrapper {
     position: relative;
 }
@@ -106,7 +103,6 @@ select {
 
 .price-input {
     padding-left: 1.5rem;
-    /* ¥マークの幅に合わせて余白追加 */
 }
 
 .submit-button {

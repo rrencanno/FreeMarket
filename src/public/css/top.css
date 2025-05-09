@@ -53,8 +53,8 @@
 .login-btn:hover {
     background-color: #d64a4a;
 }
-/***/
 
+/* ログイン時の画面 */
 .product-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -73,7 +73,6 @@
     height: 200px;
 }
 
-/* 商品画像 */
 .image-wrapper img {
     width: 100%;
     height: 100%;
@@ -84,11 +83,6 @@
     display: block;
 }
 
-.product-wrapper:hover img {
-    border-color: #9370DB;
-}
-
-/* 売却時にかぶせる黒いオーバーレイ */
 .overlay {
     position: absolute;
     top: 0;
@@ -99,7 +93,6 @@
     border-radius: 10px;
 }
 
-/* SOLD ラベル */
 .sold-out {
     position: absolute;
     top: 50%;
@@ -170,14 +163,6 @@
     border-color: #f5c800;
 }
 
-.disabled {
-    color: #999;
-    border-color: #ddd;
-    background-color: #f8f9fa;
-}
-/***/
-
-/* レスポンシブデザイン */
 @media (max-width: 768px) {
     .product-list {
         grid-template-columns: repeat(2, 250px);
@@ -189,4 +174,3 @@
         grid-template-columns: 250px;
     }
 }
-/***/

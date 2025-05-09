@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 @endsection
 
 @section('content')
@@ -26,37 +26,20 @@
             @enderror
         </div>
 
-        <div class="form-section">
-            <label>ユーザー名</label>
-            <input type="text" name="name" value="{{ old('name', $user->name) }}">
-            @error('name')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div class="form-section">
-            <label>郵便番号</label>
-            <input type="text" name="post_code" value="{{ old('post_code', $user->post_code) }}">
-            @error('post_code')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div class="form-section">
-            <label>住所</label>
-            <input type="text" name="address" value="{{ old('address', $user->address) }}">
-            @error('address')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div class="form-section">
-            <label>建物名</label>
-            <input type="text" name="building_name" value="{{ old('building_name', $user->building_name) }}">
-            @error('building_name')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
+        @foreach ([
+            'name' => 'ユーザー名',
+            'post_code' => '郵便番号',
+            'address' => '住所',
+            'building_name' => '建物名'
+        ] as $field => $label)
+            <div class="form-section">
+                <label for="{{ $field }}">{{ $label }}</label>
+                <input type="text" name="{{ $field }}" id="{{ $field }}" value="{{ old($field, $user->$field) }}">
+                @error($field)
+                    <p class="error">{{ $message }}</p>
+                @enderror
+            </div>
+        @endforeach
 
         <button type="submit" class="submit-button">更新する</button>
     </form>
@@ -72,7 +55,6 @@
         if (file && file.type.startsWith('image/')) {
             const reader = new FileReader();
             reader.onload = function(event) {
-                // プレビューがimgでなくdivの場合、imgに差し替える
                 if (preview.tagName.toLowerCase() === 'div') {
                     const newImg = document.createElement('img');
                     newImg.src = event.target.result;

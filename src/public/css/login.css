@@ -53,6 +53,12 @@ button:hover {
     text-decoration: none;
 }
 
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
 /* ==== PC：1400px〜1540px対応 ==== */
 @media screen and (min-width: 1400px) and (max-width: 1540px) {
     form {

@@ -10,8 +10,7 @@
     @yield('css')
 </head>
 <body>
-
-    <!-- ログアウトフォーム（非表示） -->
+    <!-- POST送信かつ、見た目をリンクっぽくするため -->
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>

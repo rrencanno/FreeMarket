@@ -15,7 +15,7 @@
             <label>商品画像</label>
             <div class="upload-box">
                 <label for="image-input" class="upload-label">画像を選択する</label>
-                <input type="file" id="image-input" name="image" accept="image/*">
+                <input type="file" id="image-input" name="image" class="hidden-input" accept="image/*">
                 <div class="image-preview">
                     <img id="preview" src="#" alt="プレビュー画像" style="display: none; max-width: 100%; margin-top: 10px;">
                 </div>

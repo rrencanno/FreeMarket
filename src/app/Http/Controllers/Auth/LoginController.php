@@ -14,21 +14,19 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    // ログイン処理
     public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('top'); // ログイン後の遷移先
+            return redirect()->route('top');
         }
 
         return back()->withErrors([
-            'email' => 'メールアドレスまたはパスワードが正しくありません。',
-        ]);
+            'login_error' => 'ログイン情報が登録されていません。',
+        ])->withInput();
     }
 
-    // ログアウト処理
     public function logout(Request $request)
     {
         Auth::logout();

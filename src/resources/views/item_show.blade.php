@@ -7,7 +7,7 @@
 @section('content')
 <div class="item-detail">
     <div class="item-left">
-        <img src="{{ asset('storage/' . $product->image_url) ?? 'https://via.placeholder.com/300x300?text=商品画像' }}" alt="商品画像">
+        <img src="{{ asset('storage/' . $product->image_url) }}" alt="商品画像">
     </div>
 
     <div class="item-right">

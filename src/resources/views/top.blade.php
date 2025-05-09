@@ -18,8 +18,8 @@
             <a href="{{ route('login') }}" class="login-btn">ログイン</a>
         </div>
     @endif
-    <!--  -->
 
+    <!-- ログイン時の画面 -->
     <div class="product-list">
         @foreach ($products as $product)
         <div class="product-item">

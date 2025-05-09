@@ -27,8 +27,6 @@
             @if (!empty($product->image_url))
                 <img src="{{ asset('storage/' . $product->image_url) }}" alt="商品画像">
                 <p class="product-name">{{ $product->name }}</p>
-            @else
-                <img src="{{ asset('storage/default.png') }}" alt="デフォルト画像">
             @endif
         </div>
     @endforeach
