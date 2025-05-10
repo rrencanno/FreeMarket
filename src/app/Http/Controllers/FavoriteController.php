@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,7 +12,6 @@ class FavoriteController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($id);
 
-        // リレーションを更新
         $user->load('favorites');
 
         if ($user->favorites->contains($product->id)) {

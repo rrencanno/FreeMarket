@@ -11,8 +11,7 @@ class PurchaseTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function 商品を購入すると購入が完了する()
+    public function test_商品を購入すると購入が完了する()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
@@ -29,8 +28,7 @@ class PurchaseTest extends TestCase
         ]);
     }
 
-    /** @test */
-    public function 購入済み商品は商品一覧でsoldと表示される()
+    public function test_購入済み商品は商品一覧でSOLDと表示される()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
@@ -43,8 +41,7 @@ class PurchaseTest extends TestCase
         $response->assertSeeText('SOLD');
     }
 
-    /** @test */
-    public function 購入した商品はプロフィール購入一覧に表示される()
+    public function test_購入した商品はプロフィール購入一覧に表示される()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();

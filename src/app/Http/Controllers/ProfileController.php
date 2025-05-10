@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
-use App\Models\ShippingAddress;
 use App\Models\Product;
+use App\Models\ShippingAddress;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -42,7 +42,7 @@ class ProfileController extends Controller
         return redirect()->route('top')->with('success', 'プロフィールを更新しました！');
     }
 
-    // マイページ画面
+    // マイページ画面表示
     public function mypage(Request $request)
     {
         $user = Auth::user();

@@ -13,8 +13,7 @@ class ProductDetailTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function 必要な商品情報が表示される()
+    public function test_必要な商品情報が表示される()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create([
@@ -26,7 +25,6 @@ class ProductDetailTest extends TestCase
             'image_url' => 'test-image.jpg',
         ]);
 
-        // いいねとコメントを追加
         $product->favorites()->attach($user->id);
 
         Comment::factory()->count(2)->create([
@@ -45,11 +43,10 @@ class ProductDetailTest extends TestCase
         $response->assertSee('良好');
         $response->assertSee('コメントテスト');
         $response->assertSee($user->name);
-        $response->assertSee('test-image.jpg'); // image_urlの確認
+        $response->assertSee('test-image.jpg');
     }
 
-    /** @test */
-    public function 複数選択されたカテゴリが表示される()
+    public function test_複数選択されたカテゴリが表示される()
     {
         $product = Product::factory()->create(['name' => 'カテゴリ商品']);
         $categories = collect([
@@ -58,7 +55,6 @@ class ProductDetailTest extends TestCase
             Category::factory()->create(['name' => 'カテゴリC']),
         ]);
 
-        // カテゴリを関連付け
         $product->categories()->attach($categories->pluck('id'));
 
         $response = $this->get(route('item_show', ['id' => $product->id]));

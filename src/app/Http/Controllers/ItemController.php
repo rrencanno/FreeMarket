@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Requests\ExhibitionRequest;
 use App\Models\Product;
 use App\Models\Favorite;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $tab = $request->query('tab', 'recommend'); // "recommend" (おすすめ) or "mylist" (マイリスト)
+        $tab = $request->query('tab', 'recommend');
         $search = $request->query('search');
 
         if ($tab === 'mylist') {
@@ -47,20 +47,16 @@ class ItemController extends Controller
         return view('top', compact('products', 'tab', 'search'));
     }
 
-    // 商品詳細画面
+    // 商品詳細ページ表示
     public function show($id)
     {
         $product = Product::with(['favorites', 'comments.user', 'categories'])
             ->findOrFail($id);
 
-        // if ($product->comments->isNotEmpty()) {
-        //     dd($product->comments->first()->user->image_url);
-        // }
-
         return view('item_show', compact('product'));
     }
 
-    // 出品画面
+    // 出品ページ表示
     public function create()
     {
         return view('sell');
@@ -70,7 +66,6 @@ class ItemController extends Controller
     {
         $path = $request->file('image')->store('products', 'public');
 
-        // 商品データ作成
         $product = Product::create([
             'user_id' => Auth::id(),
             'name' => $request->name,
@@ -81,7 +76,6 @@ class ItemController extends Controller
             'image_url' => $path,
         ]);
 
-        // 中間テーブル登録（もしやってたら）
         $categories = $request->input('categories', []);
         if (!empty($categories)) {
             foreach ($categories as $categoryName) {

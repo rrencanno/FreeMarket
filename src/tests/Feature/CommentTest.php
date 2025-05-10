@@ -21,7 +21,7 @@ class CommentTest extends TestCase
             'comment' => 'これはテストコメントです。',
         ]);
 
-        $response->assertRedirect(); // 成功時のリダイレクトを確認
+        $response->assertRedirect();
         $this->assertDatabaseHas('comments', [
             'user_id' => $user->id,
             'product_id' => $product->id,
@@ -60,7 +60,7 @@ class CommentTest extends TestCase
         $user = User::factory()->create();
         $product = Product::factory()->create();
 
-        $longComment = str_repeat('あ', 256); // 256文字
+        $longComment = str_repeat('あ', 256);
 
         $response = $this->actingAs($user)->post("/comment/{$product->id}", [
             'comment' => $longComment,

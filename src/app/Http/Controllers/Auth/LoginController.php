@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 
@@ -27,7 +26,7 @@ class LoginController extends Controller
         ])->withInput();
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
         return redirect()->route('login');

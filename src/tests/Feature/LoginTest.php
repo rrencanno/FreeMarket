@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -11,8 +10,7 @@ class LoginTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function メールアドレスが入力されていない場合バリデーションエラーになる()
+    public function test_メールアドレスが入力されていない場合バリデーションエラーになる()
     {
         $response = $this->post('/login', [
             'email' => '',
@@ -22,8 +20,7 @@ class LoginTest extends TestCase
         $response->assertSessionHasErrors('email');
     }
 
-    /** @test */
-    public function パスワードが入力されていない場合バリデーションエラーになる()
+    public function test_パスワードが入力されていない場合バリデーションエラーになる()
     {
         $response = $this->post('/login', [
             'email' => 'test@example.com',
@@ -33,8 +30,7 @@ class LoginTest extends TestCase
         $response->assertSessionHasErrors('password');
     }
 
-    /** @test */
-    public function 入力情報が間違っている場合バリデーションエラーになる()
+    public function test_入力情報が間違っている場合バリデーションエラーになる()
     {
         $response = $this->from('/login')->post('/login', [
             'email' => 'wrong@example.com',
@@ -42,26 +38,23 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertRedirect('/login');
-        $response->assertSessionHasErrors('email'); // Fortifyではemailにエラーをつけることが多い
+        $response->assertSessionHasErrors('login_error');
     }
 
 
-    /** @test */
-    public function 正しい情報が入力された場合ログイン成功する()
+    public function test_正しい情報が入力された場合ログイン成功する()
     {
-        // 事前にユーザーを作成
         $user = User::factory()->create([
             'email' => 'test@example.com',
-            'password' => bcrypt('password'), // ハッシュ化必須
+            'password' => bcrypt('password'),
         ]);
 
-        // ログイン処理
         $response = $this->post('/login', [
             'email' => 'test@example.com',
             'password' => 'password',
         ]);
 
-        $response->assertRedirect('/'); // 遷移先に応じて調整
+        $response->assertRedirect('/');
         $this->assertAuthenticatedAs($user);
     }
 

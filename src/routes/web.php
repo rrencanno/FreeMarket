@@ -9,7 +9,6 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CommentController;
-use Laravel\Fortify\Fortify;
 
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -37,12 +36,6 @@ Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('
 
 Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
 Route::patch('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
-
-// Stripe機能 //
-// Route::post('/purchase/{item_id}/checkout', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
-// Route::get('/purchase/success', [PurchaseController::class, 'success'])->name('purchase.success');
-// Route::get('/purchase/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
-
 
 Route::get('/mypage', [ProfileController::class, 'mypage'])->name('mypage');
 

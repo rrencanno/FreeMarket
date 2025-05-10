@@ -19,7 +19,6 @@ class PurchaseFactory extends Factory
             'shipping_address_id' => null,
             'payment_method' => $this->faker->randomElement(['コンビニ払い', 'カード払い']),
             'amount' => $this->faker->randomFloat(2, 100, 10000),
-            // 'status' => $this->faker->randomElement(['pending', 'completed']),
         ];
     }
 }

@@ -18,7 +18,7 @@ class FavoriteTest extends TestCase
 
         $response = $this->actingAs($user)->post("/favorite/{$product->id}");
 
-        $response->assertRedirect(); // リダイレクト確認
+        $response->assertRedirect();
         $this->assertDatabaseHas('favorites', [
             'user_id' => $user->id,
             'product_id' => $product->id,
@@ -37,7 +37,6 @@ class FavoriteTest extends TestCase
         $response = $this->actingAs($user)->get("/item/{$product->id}");
 
         $response->assertStatus(200);
-        // CSSクラスや文字など、視覚的な変化の要素を確認（仮にクラスが `favorited` とする）
         $this->assertStringContainsString('class="icon-btn favorited"', $response->getContent());
     }
 

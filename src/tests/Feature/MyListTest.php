@@ -12,8 +12,7 @@ class MyListTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function いいねした商品だけが表示される()
+    public function test_いいねした商品だけが表示される()
     {
         $user = User::factory()->create();
         $likedProduct = Product::factory()->create();
@@ -29,8 +28,7 @@ class MyListTest extends TestCase
         $response->assertDontSee($notLikedProduct->name);
     }
 
-    /** @test */
-    public function 購入済み商品は_sold_と表示される()
+    public function test_購入済み商品は_SOLD_と表示される()
     {
         $user = User::factory()->create();
         $product = Product::factory()->create();
@@ -38,7 +36,6 @@ class MyListTest extends TestCase
         // いいね登録
         $user->favorites()->attach($product->id);
 
-        // 購入登録
         Purchase::create([
             'user_id' => $user->id,
             'product_id' => $product->id,
@@ -52,28 +49,25 @@ class MyListTest extends TestCase
         $response->assertSee('SOLD');
     }
 
-    /** @test */
-    public function 自分が出品した商品は表示されない()
+    public function test_自分が出品した商品は表示されない()
     {
         $user = User::factory()->create();
-
         $ownProduct = Product::factory()->create(['user_id' => $user->id]);
-        $likedProduct = Product::factory()->create();
-        $user->favorites()->attach($likedProduct->id);
+        $otherProduct = Product::factory()->create(); // 他人の出品
+
+        $user->favorites()->attach($otherProduct->id);
 
         $response = $this->actingAs($user)->get('/?tab=mylist');
 
-        $response->assertStatus(200);
-        $response->assertSee($likedProduct->name);
-        $response->assertDontSee($ownProduct->name);
+        $response->assertDontSeeText($ownProduct->name);
+        $response->assertSeeText($otherProduct->name);
     }
 
-    /** @test */
-    public function 未認証の場合は何も表示されない()
+    public function test_未認証の場合は何も表示されない()
     {
         $response = $this->get('/?tab=mylist');
 
         $response->assertStatus(200);
-        $response->assertDontSee('<div class="product-card">', false); // 商品カードが表示されないこと
+        $response->assertDontSee('<div class="product-card">', false);
     }
 }

@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Product;
@@ -12,8 +11,7 @@ class ProductSearchTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function 商品名で部分一致検索ができる()
+    public function test_商品名で部分一致検索ができる()
     {
         Product::factory()->create(['name' => 'Apple Watch']);
         Product::factory()->create(['name' => 'Samsung Galaxy']);
@@ -27,8 +25,7 @@ class ProductSearchTest extends TestCase
         $response->assertDontSee('Samsung Galaxy');
     }
 
-    /** @test */
-    public function 検索状態がマイリストでも保持されている()
+    public function test_検索状態がマイリストでも保持されている()
     {
         $user = User::factory()->create();
 

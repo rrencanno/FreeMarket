@@ -18,13 +18,10 @@ class SellingProductTest extends TestCase
     {
         Storage::fake('public');
 
-        // 出品ユーザー作成
         $user = User::factory()->create();
 
-        // カテゴリ作成
         $category = Category::factory()->create();
 
-        // ログイン状態で商品出品POST
         $response = $this->actingAs($user)->post('/sell', [
             'name' => 'テスト商品',
             'description' => 'これはテスト用の商品です。',
@@ -34,10 +31,8 @@ class SellingProductTest extends TestCase
             'image' => UploadedFile::fake()->create('test.jpg', 100, 'image/jpeg'),
         ]);
 
-        // リダイレクト確認（トップページ等）
         $response->assertRedirect('/');
 
-        // DBにデータが保存されていることを確認
         $this->assertDatabaseHas('products', [
             'name' => 'テスト商品',
             'description' => 'これはテスト用の商品です。',
@@ -46,7 +41,6 @@ class SellingProductTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        // 中間テーブルの確認
         $this->assertDatabaseHas('product_category', [
             'product_id' => Product::first()->id,
             'category_id' => $category->id,

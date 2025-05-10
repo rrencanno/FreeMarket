@@ -115,9 +115,9 @@ class ProductsTableSeeder extends Seeder
         ]);
 
         DB::table('product_category')->insert([
-            ['product_id' => 1, 'category_id' => 1],  // ファッション
-            ['product_id' => 1, 'category_id' => 5],  // メンズ
-            ['product_id' => 1, 'category_id' => 12], // アクセサリー
+            ['product_id' => 1, 'category_id' => 1],
+            ['product_id' => 1, 'category_id' => 5],
+            ['product_id' => 1, 'category_id' => 12],
             ['product_id' => 2, 'category_id' => 2],
             ['product_id' => 2, 'category_id' => 8],
             ['product_id' => 3, 'category_id' => 10],

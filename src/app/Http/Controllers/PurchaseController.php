@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PurchaseRequest;
 use App\Models\Product;
-use App\Models\ShippingAddress;
 use App\Models\Purchase;
-use App\Models\User;
-use Stripe\Stripe;
-use Stripe\Checkout\Session;
+use App\Models\ShippingAddress;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
 {
@@ -69,55 +66,5 @@ class PurchaseController extends Controller
 
         return redirect()->route('purchase.show', ['item_id' => $item_id])
                         ->with('success', '住所を更新しました');
-    }
-
-    // Stripe機能 //
-    public function checkout(Request $request, $item_id)
-    {
-        $request->validate([
-            'payment_method' => 'required|in:コンビニ払い,カード払い',
-        ]);
-
-        $product = Product::findOrFail($item_id);
-
-        Stripe::setApiKey(config('services.stripe.secret'));
-
-        $paymentMethod = $request->payment_method;
-
-        // カード払いの場合: Stripe Checkout セッション作成
-        if ($paymentMethod === 'カード払い') {
-            $session = Session::create([
-                'payment_method_types' => ['card'],
-                'line_items' => [[
-                    'price_data' => [
-                        'currency' => 'jpy',
-                        'product_data' => [
-                            'name' => $product->name,
-                        ],
-                        'unit_amount' => (int) $product->price,
-                    ],
-                    'quantity' => 1,
-                ]],
-                'mode' => 'payment',
-                'success_url' => route('purchase.success'),
-                'cancel_url' => route('purchase.cancel'),
-            ]);
-
-            return redirect($session->url);
-        }
-
-        // コンビニ払いの場合：成功画面にリダイレクト（Stripe未対応なためモック処理）
-        // return view('purchase.success');
-        return redirect()->route('purchase.success')->with('message', 'コンビニ払いでの購入が完了しました（仮）');
-    }
-
-    public function success()
-    {
-        return view('purchase.success');
-    }
-
-    public function cancel()
-    {
-        return view('purchase.cancel');
     }
 }
