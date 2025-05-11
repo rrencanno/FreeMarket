@@ -4,7 +4,7 @@
 
 ### Docker ビルド
 
-1. `git clone https://github.com/rrencanno/Pigly`
+1. `git clone https://github.com/rrencanno/FreeMarket`
 2. `docker-compose up -d --build`
 
 > **Note**
@@ -31,7 +31,15 @@
 5. `php artisan migrate`
 6. `php artisan db:seed`
 7. `php artisan storage:link`
-8. `composer require stripe/stripe-php`
+8. ※UnitTestを実行する場合
+
+    `php artisan test`
+
+    ※テストを実行した後は、
+
+    `php artisan db:seed`
+
+    を再実行してください。
 
 ## 使用技術 (実行環境)
 
@@ -42,11 +50,11 @@
 ## ER 図
 ![ER図]
 
-![PiGLy](PiGLy.png)
+![FreeMarket](FreeMarket.png)
 
 ## URL
 
 - **phpMyAdmin**：[http://localhost:8080](http://localhost:8080)
-- **会員登録画面**：[http://localhost/register/step1](http://localhost/register/step1)
+- **会員登録画面**：[http://localhost/register](http://localhost/register)
 - **ログイン画面** : [http://localhost/login](http://localhost/login)
-- **管理画面** : [http://localhost/weight_logs](http://localhost/weight_logs)
+- **トップ画面** : [http://localhost/](http://localhost/)
