@@ -4,8 +4,14 @@
 
 ### Docker ビルド
 
-1. `git clone https://github.com/rrencanno/FreeMarket`
-2. `docker-compose up -d --build`
+1. 
+```
+git clone https://github.com/rrencanno/FreeMarket
+```
+2. 
+```
+docker-compose up -d --build
+```
 
 > **Note**
 > MySQL が環境によって正常に起動しない場合は、各 PC に合わせて`docker-compose.yml` ファイルを編集してください。
@@ -36,17 +42,31 @@ cp .env.example .env
     DB_PASSWORD=laravel_pass
     ```
 
-4. `php artisan key:generate`
-5. `php artisan migrate`
-6. `php artisan db:seed`
-7. `php artisan storage:link`
+4. 
+```
+php artisan key:generate
+```
+5. 
+```
+php artisan migrate
+```
+6. 
+```
+php artisan db:seed
+```
+7. 
+```
+php artisan storage:link
+```
 8. ※UnitTestを実行する場合
-
-    `php artisan test`
+    ```
+    php artisan test
+    ```
 
     ※テストを実行した後は、
-
-    `php artisan db:seed`
+    ```
+    php artisan db:seed
+    ```
 
     を再実行してください。
 
