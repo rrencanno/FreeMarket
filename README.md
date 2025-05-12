@@ -12,9 +12,18 @@
 
 ### Laravel 環境構築
 
-1. `docker-compose exec php bash`
-2. `composer install`
-3. `cp .env.example .env`
+1. 
+```
+docker-compose exec php bash
+```
+2. 
+```
+composer install
+```
+3. 
+```
+cp .env.example .env
+```
 
     `.env` ファイルの環境変数を変更:
 
