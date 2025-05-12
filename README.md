@@ -77,7 +77,6 @@ php artisan storage:link
 - **MySQL** 8.0.26
 
 ## ER 図
-![ER図]
 
 ![FreeMarket](FreeMarket.png)
 
