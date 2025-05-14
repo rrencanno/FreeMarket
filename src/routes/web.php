@@ -39,7 +39,7 @@ Route::patch('/purchase/address/{item_id}', [PurchaseController::class, 'updateA
 
 Route::get('/mypage', [ProfileController::class, 'mypage'])
     ->middleware('auth')
-    ->name('sell');
+    ->name('mypage');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/mypage/profile', [ProfileController::class, 'show'])->name('mypage.profile');
