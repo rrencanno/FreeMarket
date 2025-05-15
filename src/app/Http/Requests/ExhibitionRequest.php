@@ -35,11 +35,9 @@ class ExhibitionRequest extends FormRequest
             'categories.array' => 'カテゴリーの形式が不正です。',
             'categories.min' => '少なくとも1つのカテゴリーを選択してください。',
             'categories.*.exists' => '選択されたカテゴリーは存在しません。',
-
             'name.required' => '商品名を入力してください。',
             'description.required' => '商品説明を入力してください。',
             'description.max' => '商品説明は255文字以内で入力してください。',
-
             'condition.required' => '商品の状態を選択してください。',
             'price.required' => '商品価格を入力してください。',
             'price.numeric' => '商品価格は数値で入力してください。',

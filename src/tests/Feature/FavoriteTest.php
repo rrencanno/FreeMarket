@@ -33,7 +33,6 @@ class FavoriteTest extends TestCase
         // いいね追加
         $this->actingAs($user)->post("/favorite/{$product->id}");
 
-        // 商品詳細ページを確認
         $response = $this->actingAs($user)->get("/item/{$product->id}");
 
         $response->assertStatus(200);

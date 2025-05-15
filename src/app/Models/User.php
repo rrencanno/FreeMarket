@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'email', 'password', 'image_url', 'post_code', 'address', 'building_name', 'phone_number'];
+    protected $fillable = ['name', 'email', 'password', 'image_url', 'post_code', 'address', 'building_name'];
 
     public function products() {
         return $this->hasMany(Product::class);

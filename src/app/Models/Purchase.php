@@ -16,7 +16,6 @@ class Purchase extends Model
         'shipping_address_id',
         'payment_method',
         'amount',
-        'status',
     ];
 
     public function user(): BelongsTo
