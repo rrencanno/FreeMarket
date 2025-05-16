@@ -50,7 +50,19 @@ php artisan key:generate
 ```
 php artisan migrate
 ```
-6. 
+※UnitTestを実行する場合
+
+```
+php artisan test
+```
+
+テストを実行した後は、以下のコマンドでシーディング作成をしてください。
+
+```
+php artisan migrate:fresh --seed
+```
+
+6. テストを行なっていた場合は、このステップは省略してください。
 ```
 php artisan db:seed
 ```
@@ -58,17 +70,6 @@ php artisan db:seed
 ```
 php artisan storage:link
 ```
-8. ※UnitTestを実行する場合
-    ```
-    php artisan test
-    ```
-
-    ※テストを実行した後は、
-    ```
-    php artisan db:seed
-    ```
-
-    を再実行してください。
 
 ## 使用技術 (実行環境)
 
