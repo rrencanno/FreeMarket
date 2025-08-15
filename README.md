@@ -1,14 +1,21 @@
+![FreeMarket1 Screenshot](./images/screenshot1.png)
+
+![FreeMarket2 Screenshot](./images/screenshot2.png)
+
 # お問い合わせフォーム
 
 ## 環境構築
 
 ### Docker ビルド
 
-1. 
+1.
+
 ```
 git clone https://github.com/rrencanno/FreeMarket
 ```
-2. 
+
+2.
+
 ```
 docker-compose up -d --build
 ```
@@ -18,15 +25,20 @@ docker-compose up -d --build
 
 ### Laravel 環境構築
 
-1. 
+1.
+
 ```
 docker-compose exec php bash
 ```
-2. 
+
+2.
+
 ```
 composer install
 ```
-3. 
+
+3.
+
 ```
 cp .env.example .env
 ```
@@ -42,15 +54,19 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-4. 
+4.
+
 ```
 php artisan key:generate
 ```
-5. 
+
+5.
+
 ```
 php artisan migrate
 ```
-※UnitTestを実行する場合
+
+※UnitTest を実行する場合
 
 ```
 php artisan test
@@ -63,10 +79,13 @@ php artisan migrate:fresh --seed
 ```
 
 6. テストを行なっていた場合は、このステップは省略してください。
+
 ```
 php artisan db:seed
 ```
-7. 
+
+7.
+
 ```
 php artisan storage:link
 ```
